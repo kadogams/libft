@@ -6,7 +6,7 @@
 #    By: aclecler <aclecler@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/18 00:39:00 by aclecler          #+#    #+#              #
-#    Updated: 2019/02/07 12:11:48 by skadogam         ###   ########.fr        #
+#    Updated: 2019/02/07 13:27:15 by aclecler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ CC = gcc
 
 #FLAGS = -O3 -Wall -Wextra -Werror
 
-IN =	*.c
+IN =	asm.c\
+		convert_name_comment.c\
 
 LIBFT = ../libftprintf
 
@@ -34,6 +35,7 @@ OBJS_LEMIN = $(addprefix $(OUT_DIR)/,$(IN:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJS_LEMIN)
+	@mkdir -p players
 	@make -C $(LIBFT)
 	@$(CC) $(FLAGS) $^ -o $@ -I $(LIBFT)/libft/$(INC) -I $(LIBFT)/$(INC) $(LIBFT)/libftprintf.a
 	@echo "\033[32mOutfile ASM	[ ✔ ]"
@@ -56,6 +58,8 @@ fclean: clean
 	@rm -f $(NAME)
 	@make fclean -C $(LIBFT)
 	@echo "\033[32mFclean  [ ✔ ]"
+clean_player:
+	@rm -f players/*
 
 re: fclean all
 m : fclean main

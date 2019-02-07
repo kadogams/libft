@@ -5,7 +5,7 @@ void	quit()
 	exit(0);
 }
 
-int	check_valid(char *file)
+static int	check_valid(char *file)
 {
 	int len;
 
@@ -15,54 +15,62 @@ int	check_valid(char *file)
 	return(KO);
 }
 
-char	*parse_name(char *file)
+static char	*parse_name(char *file)
 {
 	int	len;
 	char	*name;
 	char	*tmp;
 
 	tmp = ft_strrchr(file, '/');
-	len = (tmp == NULL) ? ft_strlen(file) + 3 : ft_strlen(tmp) + 2;
+	len = (tmp == NULL) ? ft_strlen(file) + 3 : ft_strlen(tmp) + 10;
 	if (!(name = (char*)malloc(sizeof(char) * len)))
 		quit();
 	name[len - 1] = '\0';
 	if (tmp == NULL)
-		name = ft_strcpy(name, file);
+	{
+		name = ft_strcpy(name, "players/");
+		name = ft_strcat(name, file);
+	}
 	else
-		name = ft_strcpy(name, tmp + 1);
+	{
+		name = ft_strcpy(name, "players/");
+		name = ft_strcat(name, tmp + 1);
+	}
 	name[len - 2] = 'r';
 	name[len - 3] = 'o';
 	name[len - 4] = 'c';
 	return (name);
 }
 
-int	open_core_file(char *file)
+ static int	open_core_file(char *file)
 {
 	char	*name;
 	int		fd;
 
 	name = parse_name(file);
-	fd = open("players/stp.cor", O_CREAT | O_APPEND | O_DIRECTORY | O_WRONLY);
+	fd = open(name, O_CREAT | O_APPEND | O_WRONLY | O_TRUNC);
 	return (fd);
 }
 
-header_t	open_file(char *file, header_t *header)
+static void	open_file(char *file, header_t *header, t_asm *env)
 {
-	int fd_s;
-	int fd_cor;
 
-	fd_s = open(file, O_RDONLY);
-	fd_cor = open_core_file(file);
-	ft_printf("fd = %d\n", fd_cor);
+	env->fd_s = open(file, O_RDONLY);
+	env->fd_cor = open_core_file(file);
+	ft_printf("fd = %d\n", env->fd_cor);
 }
 
 int	main(int ac, char **av)
 {
-	header_t header;
+	header_t	header;
+	t_asm 		env;
+	int			fd;
 
 	if (ac == 2 && check_valid(av[1]))
 	{
-		open_file(av[1], &header);
+		open_file(av[1], &header, &env);
+		if (env.fd_cor)
+			convert_to_hex(&header, &env);
 	}
-
+	return (0);
 }
