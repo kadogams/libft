@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: skadogam <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/13 15:03:00 by skadogam          #+#    #+#              #
-#    Updated: 2018/10/03 16:49:15 by skadogam         ###   ########.fr        #
+#    Updated: 2019/02/07 11:58:56 by skadogam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,9 +43,6 @@ all: $(NAME)
 
 $(NAME):
 	@gcc $(FLAGS) -c $(SRC) -I $(HEADER)
-	@ar rc $(NAME) $(OBJ)
-	@ranlib $(NAME)
-	@echo "\033[32mOutfile LIBFT	[ ✔ ]"
 
 clean:
 	@/bin/rm -f $(OBJ)

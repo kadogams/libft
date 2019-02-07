@@ -3,18 +3,23 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: skadogam <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/13 15:03:00 by skadogam          #+#    #+#              #
-#    Updated: 2018/10/03 17:27:36 by skadogam         ###   ########.fr        #
+#    Updated: 2019/02/07 11:57:22 by skadogam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
+
 HEADER = ./includes
+
 LIB = ./libft
+
 LIB_HEADERS = ./libft/includes
+
 FLAGS = -Wall -Wextra -Werror
+
 SRC = ft_convert_char.c\
 		ft_convert_nbr.c\
 		ft_convert_size.c\
@@ -24,6 +29,7 @@ SRC = ft_convert_char.c\
 		ft_flags.c\
 		ft_init_stuff.c\
 		ft_printf.c
+
 OBJ = $(SRC:%.c=%.o)
 
 all: $(NAME)

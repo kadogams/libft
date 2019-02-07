@@ -6,17 +6,17 @@
 #    By: aclecler <aclecler@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/18 00:39:00 by aclecler          #+#    #+#              #
-#    Updated: 2019/02/07 12:10:59 by skadogam         ###   ########.fr        #
+#    Updated: 2019/02/07 12:11:48 by skadogam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = corewar
+NAME = asm
 
 CC = gcc
 
 #FLAGS = -O3 -Wall -Wextra -Werror
 
-IN =	vm.c
+IN =	*.c
 
 LIBFT = ../libftprintf
 
@@ -36,7 +36,7 @@ all: $(NAME)
 $(NAME): $(OBJS_LEMIN)
 	@make -C $(LIBFT)
 	@$(CC) $(FLAGS) $^ -o $@ -I $(LIBFT)/libft/$(INC) -I $(LIBFT)/$(INC) $(LIBFT)/libftprintf.a
-	@echo "\033[32mOutfile COREWAR	[ ✔ ]"
+	@echo "\033[32mOutfile ASM	[ ✔ ]"
 
 $(OUT_DIR)/%.o: $(SRCS_DIR)/%.c
 	@mkdir -p $(OUT_DIR)
