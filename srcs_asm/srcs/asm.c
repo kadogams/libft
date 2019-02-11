@@ -1,7 +1,9 @@
 #include "asm.h"
 
-void	quit()
+void	quit(char **str)
 {
+	ft_strdel(str);
+	ft_printf("QUIT\n");
 	exit(0);
 }
 
@@ -24,7 +26,7 @@ static char	*parse_name(char *file)
 	tmp = ft_strrchr(file, '/');
 	len = (tmp == NULL) ? ft_strlen(file) + 3 : ft_strlen(tmp) + 10;
 	if (!(name = (char*)malloc(sizeof(char) * len)))
-		quit();
+		quit(NULL);
 	name[len - 1] = '\0';
 	if (tmp == NULL)
 	{
@@ -42,13 +44,13 @@ static char	*parse_name(char *file)
 	return (name);
 }
 
- static int	open_core_file(char *file)
+ static int	open_core_file(char *file, t_asm *env)
 {
 	char	*name;
 	int		fd;
 
-	name = parse_name(file);
-	fd = open(name, O_CREAT | O_APPEND | O_WRONLY | O_TRUNC);
+	env->output = parse_name(file);
+	fd = open(env->output, O_CREAT | O_APPEND | O_WRONLY | O_TRUNC);
 	return (fd);
 }
 
@@ -56,7 +58,7 @@ static void	open_file(char *file, header_t *header, t_asm *env)
 {
 
 	env->fd_s = open(file, O_RDONLY);
-	env->fd_cor = open_core_file(file);
+	env->fd_cor = open_core_file(file, env);
 	ft_printf("fd = %d\n", env->fd_cor);
 }
 
@@ -68,9 +70,10 @@ int	main(int ac, char **av)
 
 	if (ac == 2 && check_valid(av[1]))
 	{
+		init_env(&env);
 		open_file(av[1], &header, &env);
 		if (env.fd_cor)
-			convert_to_hex(&header, &env);
+			start_parsing(&header, &env);
 	}
 	return (0);
 }
