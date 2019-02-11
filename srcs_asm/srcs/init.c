@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:03:49 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/11 13:22:59 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/11 15:23:17 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@ int	init_env(t_asm *env)
 {
 	env->read_name = 0;
 	env->read_comment = 0;
+	env->line = NULL;
 	return (1);
 }

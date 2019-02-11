@@ -1,8 +1,8 @@
 #include "asm.h"
 
-void	quit(char **str)
+void	quit(t_asm *env)
 {
-	ft_strdel(str);
+	ft_strdel(&env->line);
 	ft_printf("QUIT\n");
 	exit(0);
 }

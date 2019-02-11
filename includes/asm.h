@@ -11,9 +11,12 @@ typedef struct  s_asm
 	int			read_name;
 	int			read_comment;
 	char		*output;
+	char		*line;
 }               t_asm;
 
 int		init_env(t_asm *env);
-int		skip_whitespace(char *str);
+int		skip_whitespace(char *str, t_asm *env);
+int		check_last_line(char *line, int option, t_asm *env);
+void	skip_blank_lines(t_asm *env);
 void	start_parsing(header_t *header, t_asm *env);
-void	quit(char **str);
+void	quit(t_asm *env);
