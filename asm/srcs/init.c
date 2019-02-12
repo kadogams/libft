@@ -14,8 +14,8 @@
 
 int	init_env(t_asm *env)
 {
-	env->read_name = 0;
-	env->read_comment = 0;
 	env->line = NULL;
+	env->cur_x = 0;
+	env->cur_y = 0;
 	return (1);
 }

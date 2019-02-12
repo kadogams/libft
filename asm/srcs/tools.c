@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-int	skip_whitespace(char *str, t_asm *env)
+int	skip_whitespace(char *str, t_asm *env, int update)
 {
 	int	i;
 
@@ -25,8 +25,12 @@ int	skip_whitespace(char *str, t_asm *env)
 		str[i] == '\r' || str[i] == '\f' || str[i] == ' ')
 		{
 			i++;
+			if (update)
+				env->cur_x += 1;
 			continue ;
 		}
+		if (update)
+			env->cur_x += 1;
 		break ;
 	}
 	return (i);
@@ -40,7 +44,7 @@ int		check_last_line(char *line, int option, t_asm *env)
 	str = ft_strchr(line, '"');
 	if (option)
 		str = ft_strchr(str + 1, '"');
-	i = skip_whitespace(str + 1, env) + 1;
+	i = skip_whitespace(str + 1, env, UPDATE_X) + 1;
 	if (str[i] == '\0')
 	{
 		ft_strdel(&env->line);
@@ -57,7 +61,9 @@ int	skip_blank_lines(t_asm *env)
 
 	while ((ret = get_next_line(env->fd_s, &env->line)) > 0)
 	{
-		i = skip_whitespace(env->line, env);
+		env->cur_x = 0;
+		env->cur_y += 1;
+		i = skip_whitespace(env->line, env, NO_UPDATE_X);
 		if (env->line[i] == '\0')
 		{
 			ft_strdel(&env->line);
