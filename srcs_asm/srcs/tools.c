@@ -42,9 +42,12 @@ int		check_last_line(char *line, int option, t_asm *env)
 		str = ft_strchr(str + 1, '"');
 	i = skip_whitespace(str + 1, env) + 1;
 	if (str[i] == '\0')
-		return (1);
-	quit(env);
-	return (0);
+	{
+		ft_strdel(&env->line);
+		return (OK);
+	}
+	ft_strdel(&env->line);
+	return (KO);
 }
 
 void	skip_blank_lines(t_asm *env)

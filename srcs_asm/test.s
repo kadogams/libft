@@ -1,6 +1,6 @@
 .name         "dtonc v1.0pl3"
-		ddd
-.comment    "ta mere elle fait du rodeo sur les kfar"
+	
+.comment    ""ta mere elle fait du rodeo surles kfar"
 .extend
 
 ld    %0x80000000, r6    # moins
