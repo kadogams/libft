@@ -6,7 +6,7 @@
 #    By: aclecler <aclecler@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/18 00:39:00 by aclecler          #+#    #+#              #
-#    Updated: 2019/02/12 14:37:59 by adefonta         ###   ########.fr        #
+#    Updated: 2019/02/12 16:01:28 by aclecler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRCS_DIR = srcs
 
 OUT_DIR = tmp
 
-INC = -I includes -I ../libftprintf/includes/ -I $(LIBFT)/libft/includes
+INC = -Iincludes -I ../libftprintf/includes/ -I $(LIBFT)/libft/includes
 
 
 SRCS_LEMIN = $(addprefix $(SRCS_DIR)/,$(IN))
