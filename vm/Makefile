@@ -6,7 +6,7 @@
 #    By: aclecler <aclecler@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/18 00:39:00 by aclecler          #+#    #+#              #
-#    Updated: 2019/02/07 12:10:59 by skadogam         ###   ########.fr        #
+#    Updated: 2019/02/12 14:38:01 by adefonta         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRCS_DIR = srcs
 
 OUT_DIR = tmp
 
-INC = includes
+INC = -I includes -I ../libftprintf/includes/ -I $(LIBFT)/libft/includes
 
 
 SRCS_LEMIN = $(addprefix $(SRCS_DIR)/,$(IN))
@@ -40,7 +40,7 @@ $(NAME): $(OBJS_LEMIN)
 
 $(OUT_DIR)/%.o: $(SRCS_DIR)/%.c
 	@mkdir -p $(OUT_DIR)
-	@$(CC) $(FLAGS) -I ../$(INC) -I $(LIBFT)/libft/$(INC) -I $(LIBFT)/$(INC) -o $@ -c $<
+	@$(CC) $(FLAGS) $(INC) -o $@ -c $<
 
 norme:
 	norminette ./$(LIBFT)/ ./$(INC)/ ./$(SRCS_DIR)/
