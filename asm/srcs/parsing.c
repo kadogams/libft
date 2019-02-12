@@ -53,10 +53,12 @@ int	parse_comment(header_t *header, t_asm *env)
 
 	ft_bzero(header->comment, COMMENT_LENGTH);
 	skip_blank_lines(env);
-	i = skip_whitespace(env->line, env);
-	if (ft_strncmp(env->line + i, ".comment", 8))
-		return (KO);
-	i = skip_whitespace(env->line + i + 8, env) + i + 8;
+	if ((i = skip_whitespace(env->line, env)) == -1 &&
+	ft_strncmp(env->line + i, ".comment", 8))
+		return (KO)
+	if	((ret = skip_whitespace(env->line + i + 8, env)) == -1)
+	 	return (KO)
+	i = ret + i + 8;
 	if (env->line[i] != '"')
 		return (KO);
 	if ((ret = fill_comment(header, env, env->line + i + 1)) == 1)
@@ -80,7 +82,9 @@ int	parse_name(header_t *header, t_asm *env)
 	i = skip_whitespace(env->line, env);
 	if (ft_strncmp(env->line + i, ".name", 5))
 		return (KO);
-	i = skip_whitespace(env->line + i + 5, env) + i + 5;
+	if ((ret = skip_whitespace(env->line + i + 5, env)) == -1)
+	 	return (KO);
+	i = ret + i + 5;
 	if (env->line[i] != '"')
 		return (KO);
 	if ((ret = fill_prog_name(header, env, env->line + i + 1)) == 1)

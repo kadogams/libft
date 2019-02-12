@@ -18,7 +18,7 @@ int	skip_whitespace(char *str, t_asm *env)
 
 	i = 0;
 	if (!str)
-		quit(env);
+		return (-1);
 	while (str && str[i])
 	{
 		if (str[i] == '\t' || str[i] == '\v' || str[i] == '\n' ||
@@ -50,7 +50,7 @@ int		check_last_line(char *line, int option, t_asm *env)
 	return (KO);
 }
 
-void	skip_blank_lines(t_asm *env)
+int	skip_blank_lines(t_asm *env)
 {
 	int		ret;
 	int		i;
@@ -64,9 +64,9 @@ void	skip_blank_lines(t_asm *env)
 			continue ;
 		}
 		else
-			return ;
+			return (OK);
 	}
 	if (ret == -1)
-		quit(env);
-	return ;
+		return (KO);
+	return (OK);
 }
