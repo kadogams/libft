@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 16:50:48 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/12 14:57:18 by aclecler         ###   ########.fr       */
+/*   Updated: 2019/02/13 14:34:55 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,4 +117,6 @@ int	start_parsing(header_t *header, t_asm *env)
 		return (KO);
 	ft_printf("comment = |%s|", header->comment);
 	return (OK);
+	if (!parse_instructions(env))
+		return (KO);
 }
