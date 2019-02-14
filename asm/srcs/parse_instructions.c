@@ -6,11 +6,12 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 14:35:09 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/13 15:49:32 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/14 14:00:38 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
 int	search_for_instr(t_asm *env, int i)
 {
 	int	start;
@@ -44,14 +45,14 @@ int	parse_instructions(t_asm *env)
 {
 	int		i;
 
-	i = 0;
-	ft_printf("\nparse_instructions\n              ");
-	if (!skip_blank_lines(env) && (i = skip_whitespace(env->line, env, UPDATE_X))
+	ft_printf("\n---------parse_instructions---------\n");
+	if (!skip_blank_lines(env) || (i = skip_whitespace(env->line, env, UPDATE_X))
 	== -1)
 		{
 			ft_printf("KO");
 			return(KO);
 		}
+			ft_printf("i ======== %d\n", i);
 	i = skip_whitespace(env->line, env, UPDATE_X);
 	search_for_instr(env, i);
 	return (OK);

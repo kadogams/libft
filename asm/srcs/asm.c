@@ -17,7 +17,7 @@ static int	check_valid(char *file)
 	return(KO);
 }
 
-static char	*parse_name(char *file)
+/*static char	*parse_name(char *file)
 {
 	int	len;
 	char	*name;
@@ -42,9 +42,9 @@ static char	*parse_name(char *file)
 	name[len - 3] = 'o';
 	name[len - 4] = 'c';
 	return (name);
-}
+}*/
 
- static int	open_core_file(char *file, t_asm *env)
+/*static int	open_core_file(char *file, t_asm *env)
 {
 	char	*name;
 	int		fd;
@@ -52,14 +52,14 @@ static char	*parse_name(char *file)
 	env->output = parse_name(file);
 	fd = open(env->output, O_CREAT | O_APPEND | O_WRONLY | O_TRUNC);
 	return (fd);
-}
+}*/
 
 static void	open_file(char *file, header_t *header, t_asm *env)
 {
 
 	env->fd_s = open(file, O_RDONLY);
-	env->fd_cor = open_core_file(file, env);
-	ft_printf("fd = %d\n", env->fd_cor);
+	//env->fd_cor = open_core_file(file, env);
+	//ft_printf("fd = %d\n", env->fd_cor);
 }
 
 int	main(int ac, char **av)

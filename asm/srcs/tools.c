@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 16:46:24 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/11 15:28:45 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/14 13:48:15 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int	skip_blank_lines(t_asm *env)
 {
 	int		ret;
 	int		i;
-
 	while ((ret = get_next_line(env->fd_s, &env->line)) > 0)
 	{
 		env->cur_x = 0;
@@ -70,7 +69,9 @@ int	skip_blank_lines(t_asm *env)
 			continue ;
 		}
 		else
+		{
 			return (OK);
+		}
 	}
 	if (ret == -1)
 		return (KO);
