@@ -116,7 +116,8 @@ int	start_parsing(header_t *header, t_asm *env)
 	if (!parse_comment(header, env))
 		return (KO);
 	ft_printf("comment = |%s|", header->comment);
-	return (OK);
 	if (!parse_instructions(env))
 		return (KO);
+
+	return (OK);
 }

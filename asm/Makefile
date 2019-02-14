@@ -20,6 +20,8 @@ IN =	asm.c\
 		init.c\
 		parsing.c\
 		tools.c\
+		parse_instructions.c\
+		op_fct.c
 
 LIBFT = ../libftprintf
 

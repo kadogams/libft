@@ -72,7 +72,7 @@ int	main(int ac, char **av)
 	{
 		init_env(&env);
 		open_file(av[1], &header, &env);
-		if (env.fd_cor)
+//		if (env.fd_cor)
 			start_parsing(&header, &env);
 	}
 	ft_printf("cur_x = %d\n cur_y = %d\n", env.cur_x, env.cur_y);
