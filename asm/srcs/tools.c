@@ -12,6 +12,24 @@
 
 #include "asm.h"
 
+int check_space_digit(char *line, t_asm *env)
+{
+	int i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (ft_isdigit(line[i]))
+			i++;
+		else
+			break;
+	}
+	i += skip_whitespace(line + i, env, UPDATE_X);
+	if (line[i] == '\0')
+		return (OK);
+	return (KO);
+}
+
 int	skip_whitespace(char *str, t_asm *env, int update)
 {
 	int	i;
@@ -70,10 +88,10 @@ int	skip_blank_lines(t_asm *env)
 		}
 		else
 		{
-			return (OK);
+			return (1);
 		}
 	}
 	if (ret == -1)
-		return (KO);
-	return (OK);
+		return (-1);
+	return (0);
 }

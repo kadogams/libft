@@ -44,10 +44,12 @@ int	search_for_instr(t_asm *env, int i)
 int	parse_instructions(t_asm *env)
 {
 	int		i;
+	int	ret;
 
 	ft_printf("\n---------parse_instructions---------\n");
-	if (!skip_blank_lines(env) || (i = skip_whitespace(env->line, env, UPDATE_X))
-	== -1)
+	while ((ret = skip_blank_lines(env)) > 0)
+	{
+		if ((i = skip_whitespace(env->line, env, UPDATE_X)) == -1)
 		{
 			ft_printf("KO");
 			return(KO);
@@ -55,5 +57,9 @@ int	parse_instructions(t_asm *env)
 			ft_printf("i ======== %d\n", i);
 	i = skip_whitespace(env->line, env, UPDATE_X);
 	search_for_instr(env, i);
-	return (OK);
+	env->cur_x = 0;
+	}
+	if (ret == 0)
+		return (OK);
+	return (KO);
 }

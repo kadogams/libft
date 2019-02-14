@@ -68,13 +68,15 @@ int	main(int ac, char **av)
 	t_asm 		env;
 	int			fd;
 
+
 	if (ac == 2 && check_valid(av[1]))
 	{
 		init_env(&env);
 		open_file(av[1], &header, &env);
+
 //		if (env.fd_cor)
-			start_parsing(&header, &env);
+			if (!start_parsing(&header, &env))
+				ft_printf("cur_x = %d\n cur_y = %d\n", env.cur_x, env.cur_y);
 	}
-	ft_printf("cur_x = %d\n cur_y = %d\n", env.cur_x, env.cur_y);
 	return (0);
 }
