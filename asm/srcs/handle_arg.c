@@ -6,12 +6,13 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 09:03:47 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/16 16:11:10 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/16 18:00:30 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
+//TODO int max atoiv2?
 int		atoi_v2(const char *str, int *nb, t_asm *env)
 {
 	int	i;

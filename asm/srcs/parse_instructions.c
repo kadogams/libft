@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 14:35:09 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/16 13:33:03 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/16 18:31:57 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int	parse_instructions(t_asm *env)
 	if (ret == KO)
 		return (KO);
 	env->cur_x = 0;
+	if (env->index >= CHAMP_MAX_SIZE)
+		return (KO);
 	}
 	if (ret == 0)
 		return (OK);
