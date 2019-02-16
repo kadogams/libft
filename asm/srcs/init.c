@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:03:49 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/11 15:23:17 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/16 10:51:09 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,17 @@ int	init_env(t_asm *env)
 	env->label = NULL;
 	env->zjump = NULL; 
 	return (1);
+}
+
+void	init_arg(t_arg *arg)
+{
+	int	i;
+
+	i = -1;
+	arg->nb_arg = 0;
+	while (++i < 3)
+	{
+		arg->value[i] = 0;
+		arg->type[i] = 0;
+	}
 }

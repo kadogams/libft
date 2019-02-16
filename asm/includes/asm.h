@@ -26,12 +26,12 @@ typedef struct	s_asm
 params
 unsigned char octet de codage = 0;*/
 
-typedef struct		s_instr
+typedef struct		s_arg
 {
-	int				nb_prm;
+	int				nb_arg;
 	int				value[3];
 	int				type[3];
-}
+}					t_arg;
 
 typedef struct		s_label
 {
@@ -61,7 +61,9 @@ int		check_last_line(char *line, int option, t_asm *env);
 int		check_space_digit(char *line, t_asm *env);
 int		skip_blank_lines(t_asm *env);
 int 	start_parsing(header_t *header, t_asm *env);
-
+void	init_arg(t_arg *arg);
+int		handle_arg(t_asm *env, t_arg *arg, int i, char *line);
+void	fill_code(t_asm *env, int type, int value, int octet);
 int		parse_instructions(t_asm *env);
 
 int		ft_live(t_asm *env, int i);

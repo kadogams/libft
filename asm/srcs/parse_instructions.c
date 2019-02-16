@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 14:35:09 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/14 14:00:38 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/16 13:33:03 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ int	search_for_instr(t_asm *env, int i)
 		while (env->line[i] == g_op[j].opcode[k])
 		{
 			if (g_op[j].size - 1 == k)
-			{
-				(*g_op[j].ptr_fct)(env, j);
-				return (OK);
-			}
+				return ((*g_op[j].ptr_fct)(env, j));
 			i++;
 			k++;
 		}
@@ -55,8 +52,9 @@ int	parse_instructions(t_asm *env)
 			return(KO);
 		}
 			ft_printf("i ======== %d\n", i);
-	i = skip_whitespace(env->line, env, UPDATE_X);
-	search_for_instr(env, i);
+	ret = search_for_instr(env, i);
+	if (ret == KO)
+		return (KO);
 	env->cur_x = 0;
 	}
 	if (ret == 0)
