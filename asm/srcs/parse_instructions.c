@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 14:35:09 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/18 17:05:59 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/18 18:16:34 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ int	search_for_instr(t_asm *env, int i)
 		while (env->line[i] == g_op[j].opcode[k])
 		{
 			if (g_op[j].size - 1 == k)
+			{
 				return ((*g_op[j].ptr_fct)(env, j, env->line + start));
+			}
 			i++;
 			k++;
 		}
@@ -68,9 +70,14 @@ int	parse_instructions(t_asm *env)
 	if ((ret = skip_whitespace(env->line + i, env, UPDATE_X)) == -1)
 		return (KO);
 	i += ret;
+	if (env->line[i] == '\0')
+		continue ;
 	ret = search_for_instr(env, i);
 	if (ret == KO)
+	{
+		ft_printf("ret a return KO\n");
 		return (KO);
+	}
 	env->cur_x = 0;
 	if (env->index >= CHAMP_MAX_SIZE)
 		return (KO);

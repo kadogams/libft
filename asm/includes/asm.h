@@ -6,7 +6,7 @@
 
 #define UPDATE_X 1
 #define NO_UPDATE_X 0
-#define INSTR_SIZE 4
+#define INSTR_SIZE 16
 
 typedef struct	s_asm
 {
@@ -16,7 +16,7 @@ typedef struct	s_asm
 	int					fd_cor;
 	char				*output;
 	char				*line;
-	unsigned char		code[CHAMP_MAX_SIZE + 1];
+	unsigned char		code[CHAMP_MAX_SIZE + 24];
 	int					index;
 	struct s_label		*label;
 	struct s_label_arg	*label_arg;
@@ -74,6 +74,8 @@ int		is_label_char(char c);
 void	add_label_arg(t_label_arg *new, t_asm *env);
 void	add_label(t_label *new, t_asm *env);
 int		get_label(t_asm *env, int j, int i);
+void	fill_code(t_asm *env, int type, int value, int octet);
+int		get_codage(t_arg arg);
 
 int		ft_live(t_asm *env, int i, char *line);
 int		ft_ld(t_asm *env, int i, char *line);
@@ -85,10 +87,17 @@ int		ft_or(t_asm *env, int i, char *line);
 int		ft_xor(t_asm *env, int i, char *line);
 int		ft_zjmp(t_asm *env, int i, char *line);
 int		ft_ldi(t_asm *env, int i, char *line);
+int		ft_sti(t_asm *env, int i, char *line);
+int		ft_fork(t_asm *env, int i, char *line);
+int		ft_lld(t_asm *env, int i, char *line);
+int		ft_lldi(t_asm *env, int i, char *line);
+int		ft_lfork(t_asm *env, int i, char *line);
+int		ft_aff(t_asm *env, int i, char *line);
 
 static const t_op	g_op[] = {
 	{"live", 4, ft_live},
 	{"ld", 2, ft_ld},
+	{"sti", 3, ft_sti},
 	{"st", 2, ft_st},
 	{"add", 3, ft_add},
 	{"sub", 3, ft_sub},
@@ -96,13 +105,12 @@ static const t_op	g_op[] = {
 	{"or", 2, ft_or},
 	{"xor", 3, ft_xor},
 	{"zjmp", 4, ft_zjmp},
-	{"ldi", 3, ft_ldi}
-	/*{"sti", 3, ft_sti},
+	{"ldi", 3, ft_ldi},
 	{"fork", 4, ft_fork},
-	{"lld", 3, ft_lld},
 	{"lldi", 4, ft_lldi},
+	{"lld", 3, ft_lld},
 	{"lfork", 5, ft_lfork},
-	{"aff", 3, ft_aff},*/
+	{"aff", 3, ft_aff}
 };
 
 void	quit(t_asm *env);

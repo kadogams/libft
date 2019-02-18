@@ -39,12 +39,11 @@ void	fill_code(t_asm *env, int type, int value, int octet)
 int		ft_live(t_asm *env, int i, char *line)
 {
 	int		k;
+
+	ft_printf("LIVE\n");
 	t_arg	arg;
-	ft_printf("test\n");
-ft_printf("==========line = |%s|\n", line);
 	init_arg(&arg, 4, 0);
 	line = line + g_op[i].size;
-	ft_printf("line = %s\n", line);
 	env->cur_x += g_op[i].size;
 	if (!handle_arg(env, &arg, 0, line) || arg.type[0] != DIR_CODE
 			|| arg.nb_arg != 1)
@@ -62,6 +61,7 @@ int		ft_ld(t_asm *env, int i, char *line)
 	int	k;
 	t_arg arg;
 
+	ft_printf("LD\n");
 	init_arg(&arg, 4, 1);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
@@ -82,6 +82,7 @@ int		ft_st(t_asm *env, int i, char *line)
 	int	k;
 	t_arg arg;
 
+	ft_printf("ST\n");
 	init_arg(&arg, 4, 1);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
@@ -102,6 +103,7 @@ int		ft_add(t_asm *env, int i, char *line)
 	int	k;
 	t_arg arg;
 
+	ft_printf("ADD\n");
 	init_arg(&arg, 0, 1);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
@@ -122,6 +124,7 @@ int		ft_sub(t_asm *env, int i, char *line)
 	int	k;
 	t_arg arg;
 
+	ft_printf("SUB\n");
 	init_arg(&arg, 0, 1);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;

@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 09:03:47 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/18 15:24:25 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/18 18:01:24 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int		handle_arg(t_asm *env, t_arg *arg, int a, char *line)
 	int	i;
 
 	i = 0;
-	ft_printf("\n=========line = %s\n\n", line);
+	ft_printf("\nHandle_arg line = %s\n\n", line);
 	while (line[i])
 	{
 		if ((ret = skip_whitespace(line + i, env, UPDATE_X)) == -1)

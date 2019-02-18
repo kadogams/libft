@@ -6,7 +6,7 @@
 #    By: aclecler <aclecler@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/18 00:39:00 by aclecler          #+#    #+#              #
-#    Updated: 2019/02/18 17:03:48 by dazheng          ###   ########.fr        #
+#    Updated: 2019/02/18 17:39:50 by dazheng          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ IN =	asm.c\
 		label2.c\
 		op_fct.c\
 		op_fct2.c\
+		op_fct3.c\
+		op_fct4.c\
 		parsing.c\
 		parse_instructions.c\
 		tools.c\
