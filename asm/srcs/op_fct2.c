@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   op_fct2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/11 13:03:49 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/18 13:40:49 by dazheng          ###   ########.fr       */
+/*   Created: 2019/02/18 17:01:42 by dazheng           #+#    #+#             */
+/*   Updated: 2019/02/18 17:04:48 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int	init_env(t_asm *env)
+int		ft_and(t_asm *env, int i, char *line)
 {
-	env->line = NULL;
-	env->cur_x = 0;
-	env->cur_y = 0;
-	ft_bzero(env->code, CHAMP_MAX_SIZE);
-	env->index = 0;
-	env->label = NULL;
-	env->label_arg = NULL; 
-	return (1);
+
 }
 
-void	init_arg(t_arg *arg, int dir_size, int oct_codage)
+int		ft_or(t_asm *env, int i, char *line)
 {
-	int	i;
 
-	i = -1;
-	arg->dir_size = dir_size;
-	arg->oct_codage = oct_codage;
-	arg->nb_arg = 0;
-	while (++i < 3)
-	{
-		arg->value[i] = 0;
-		arg->type[i] = 0;
-	}
+}
+
+int		ft_xor(t_asm *env, int i, char *line)
+{
+
+}
+
+int		ft_zjmp(t_asm *env, int i, char *line)
+{
+
+}
+
+int		ft_ldi(t_asm *env, int i, char *line)
+{
+
 }

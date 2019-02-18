@@ -36,31 +36,36 @@ void	fill_code(t_asm *env, int type, int value, int octet)
 		return ;
 }
 
-int		ft_live(t_asm *env, int i)
+int		ft_live(t_asm *env, int i, char *line)
 {
 	int		k;
 	t_arg	arg;
-
-	init_arg(&arg);
-	k = env->cur_x + g_op[i].size;
+	ft_printf("test\n");
+ft_printf("==========line = |%s|\n", line);
+	init_arg(&arg, 4, 0);
+	line = line + g_op[i].size;
+	ft_printf("line = %s\n", line);
 	env->cur_x += g_op[i].size;
-	if (!handle_arg(env, &arg, 0, env->line + k) || arg.type[0] != DIR_CODE
+	if (!handle_arg(env, &arg, 0, line) || arg.type[0] != DIR_CODE
 			|| arg.nb_arg != 1)
+	{
+	ft_printf("test\n");
 		return (KO);
+	}
 	env->code[env->index++] = 0x01;
 	fill_code(env, arg.type[0], arg.value[0], 4);
 	return (OK);
 }
 
-int		ft_ld(t_asm *env, int i)
+int		ft_ld(t_asm *env, int i, char *line)
 {
 	int	k;
 	t_arg arg;
 
-	init_arg(&arg);
-	k = env->cur_x + g_op[i].size;
+	init_arg(&arg, 4, 1);
+	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
-	if (!handle_arg(env, &arg, 0, env->line + k) || arg.nb_arg != 2 ||
+	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 2 ||
 	(arg.type[0] != IND_CODE && arg.type[0] != DIR_CODE) ||
 	arg.type[1] != REG_CODE)
 		return (KO);
@@ -72,15 +77,15 @@ int		ft_ld(t_asm *env, int i)
 	return (OK);
 }
 
-int		ft_st(t_asm *env, int i)
+int		ft_st(t_asm *env, int i, char *line)
 {
 	int	k;
 	t_arg arg;
 
-	init_arg(&arg);
-	k = env->cur_x + g_op[i].size;
+	init_arg(&arg, 4, 1);
+	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
-	if (!handle_arg(env, &arg, 0, env->line + k) || arg.nb_arg != 2 ||
+	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 2 ||
 	(arg.type[1] != REG_CODE && arg.type[1] != IND_CODE) || arg.type[0] !=
 	REG_CODE)
 		return (KO);
@@ -92,15 +97,15 @@ int		ft_st(t_asm *env, int i)
 	return (OK);
 }
 
-int		ft_add(t_asm *env, int i)
+int		ft_add(t_asm *env, int i, char *line)
 {
 	int	k;
 	t_arg arg;
 
-	init_arg(&arg);
-	k = env->cur_x + g_op[i].size;
+	init_arg(&arg, 0, 1);
+	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
-	if (!handle_arg(env, &arg, 0, env->line + k) || arg.nb_arg != 3 ||
+	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 3 ||
 	arg.type[0] != REG_CODE || arg.type[1] != REG_CODE || arg.type[2] !=
 	REG_CODE)
 		return (KO);
@@ -112,15 +117,15 @@ int		ft_add(t_asm *env, int i)
 	return (OK);
 }
 
-int		ft_sub(t_asm *env, int i)
+int		ft_sub(t_asm *env, int i, char *line)
 {
 	int	k;
 	t_arg arg;
 
-	init_arg(&arg);
-	k = env->cur_x + g_op[i].size;
+	init_arg(&arg, 0, 1);
+	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
-	if (!handle_arg(env, &arg, 0, env->line + k) || arg.nb_arg != 3 ||
+	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 3 ||
 	arg.type[0] != REG_CODE || arg.type[1] != REG_CODE || arg.type[2] !=
 	REG_CODE)
 		return (KO);

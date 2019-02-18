@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 14:35:09 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/16 18:31:57 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/18 17:05:59 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	search_for_instr(t_asm *env, int i)
 		while (env->line[i] == g_op[j].opcode[k])
 		{
 			if (g_op[j].size - 1 == k)
-				return ((*g_op[j].ptr_fct)(env, j));
+				return ((*g_op[j].ptr_fct)(env, j, env->line + start));
 			i++;
 			k++;
 		}
@@ -37,6 +37,22 @@ int	search_for_instr(t_asm *env, int i)
 	return (KO);
 }
 
+int	search_label(t_asm *env, int i)
+{
+	int	j;
+
+	j = i;
+	while (is_label_char(env->line[i]))
+	{
+		env->cur_x += 1;
+		i++;
+	}
+	if (env->line[i] == LABEL_CHAR)
+	{
+		return get_label(env, j, i);
+	}
+	return (KO);
+}
 
 int	parse_instructions(t_asm *env)
 {
@@ -47,11 +63,11 @@ int	parse_instructions(t_asm *env)
 	while ((ret = skip_blank_lines(env)) > 0)
 	{
 		if ((i = skip_whitespace(env->line, env, UPDATE_X)) == -1)
-		{
-			ft_printf("KO");
 			return(KO);
-		}
-			ft_printf("i ======== %d\n", i);
+	i = search_label(env, i);
+	if ((ret = skip_whitespace(env->line + i, env, UPDATE_X)) == -1)
+		return (KO);
+	i += ret;
 	ret = search_for_instr(env, i);
 	if (ret == KO)
 		return (KO);

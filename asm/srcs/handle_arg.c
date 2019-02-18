@@ -6,14 +6,14 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 09:03:47 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/16 18:00:30 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/18 15:24:25 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
 //TODO int max atoiv2?
-int		atoi_v2(const char *str, int *nb, t_asm *env)
+int		atoi_v2(char *str, int *nb, t_asm *env)
 {
 	int	i;
 	int	neg;
@@ -32,15 +32,10 @@ int		atoi_v2(const char *str, int *nb, t_asm *env)
 		env->cur_x +=1;
 		i++;
 	}
+	i += skip_whitespace(str + i, env, NO_UPDATE_X);
 	if (str[i] == '\0' || str[i] == ',')
 		return (OK);
 	return (KO);
-}
-
-int		get_label()
-{
-	ft_printf("get_label\n");
-	return (1);
 }
 
 int		get_reg(t_asm *env, t_arg *arg, char *line)
@@ -61,13 +56,10 @@ int		get_dir(t_asm *env, t_arg *arg, char *line)
 	if (arg->nb_arg == 3)
 		return (KO);
 	arg->type[arg->nb_arg] = DIR_CODE;
-	if (line[0] == LABEL_CHAR)
-		get_label();
-	else
-		if (!atoi_v2(line, &arg->value[arg->nb_arg], env))
-			return (KO);
 	arg->nb_arg++;
-	return (OK);
+	if (line[0] == LABEL_CHAR)
+		return (create_label_arg(env, arg, line + 1));
+	return (atoi_v2(line, &arg->value[arg->nb_arg], env));
 }
 
 int		get_ind(t_asm *env, t_arg *arg, char *line)
@@ -76,13 +68,10 @@ int		get_ind(t_asm *env, t_arg *arg, char *line)
 	if (arg->nb_arg == 3)
 		return (KO);
 	arg->type[arg->nb_arg] = IND_CODE;
-	if (line[0] == LABEL_CHAR)
-		get_label();
-	else
-		if (!atoi_v2(line, &arg->value[arg->nb_arg], env))
-			return (KO);
 	arg->nb_arg++;
-	return (OK);
+	if (line[0] == LABEL_CHAR)
+		return (create_label_arg(env, arg, line + 1));
+	return (atoi_v2(line, &arg->value[arg->nb_arg], env));
 }
 
 int		handle_arg(t_asm *env, t_arg *arg, int a, char *line)
@@ -91,6 +80,7 @@ int		handle_arg(t_asm *env, t_arg *arg, int a, char *line)
 	int	i;
 
 	i = 0;
+	ft_printf("\n=========line = %s\n\n", line);
 	while (line[i])
 	{
 		if ((ret = skip_whitespace(line + i, env, UPDATE_X)) == -1)

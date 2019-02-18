@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 16:50:48 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/16 12:55:48 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/18 17:06:35 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,6 @@ int	start_parsing(header_t *header, t_asm *env)
 	int	i = -1;
 	while (++i < env->index)
 		ft_printf("%c", env->code[i]);
+	ft_printf("\n");
 	return (OK);
 }

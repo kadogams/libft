@@ -6,7 +6,7 @@
 #    By: aclecler <aclecler@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/18 00:39:00 by aclecler          #+#    #+#              #
-#    Updated: 2019/02/12 16:01:28 by aclecler         ###   ########.fr        #
+#    Updated: 2019/02/18 17:03:48 by dazheng          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,15 @@ CC = gcc
 
 IN =	asm.c\
 		init.c\
+		handle_arg.c\
+		label.c\
+		label2.c\
+		op_fct.c\
+		op_fct2.c\
 		parsing.c\
-		tools.c\
 		parse_instructions.c\
-		op_fct.c
+		tools.c\
+		tools2.c\
 
 LIBFT = ../libftprintf
 
