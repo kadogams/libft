@@ -16,6 +16,8 @@ typedef struct	s_asm
 	int					fd_cor;
 	char				*output;
 	char				*line;
+	unsigned char		magic[4];
+	unsigned char		size[8];
 	unsigned char		code[CHAMP_MAX_SIZE + 24];
 	int					index;
 	struct s_label		*label;
