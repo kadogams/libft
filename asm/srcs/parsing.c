@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 16:50:48 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/18 17:06:35 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/19 11:12:35 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ int	start_parsing(header_t *header, t_asm *env)
 		return (KO);
 	ft_printf("comment = |%s|\n", header->comment);
 	if (!parse_instructions(env))
+		return (KO);
+	if (!manage_labels(env))
 		return (KO);
 	ft_printf("\n\n----------index = %d\n", env->index);
 	int	i = -1;

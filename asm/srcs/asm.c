@@ -1,4 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   asm.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/19 13:21:39 by dazheng           #+#    #+#             */
+/*   Updated: 2019/02/19 13:24:01 by dazheng          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
+
+//TODO COMMENTAIRE + GESTION ERREUR + CREATION FICHIER
 
 void	quit(t_asm *env)
 {
@@ -17,7 +31,7 @@ static int	check_valid(char *file)
 	return(KO);
 }
 
-/*static char	*parse_name(char *file)
+static char	*parse_name(char *file)
 {
 	int	len;
 	char	*name;
@@ -42,24 +56,24 @@ static int	check_valid(char *file)
 	name[len - 3] = 'o';
 	name[len - 4] = 'c';
 	return (name);
-}*/
+}
 
-/*static int	open_core_file(char *file, t_asm *env)
+static int	open_core_file(char *file, t_asm *env)
 {
 	char	*name;
 	int		fd;
 
 	env->output = parse_name(file);
-	fd = open(env->output, O_CREAT | O_APPEND | O_WRONLY | O_TRUNC);
+	fd = open(env->output, O_CREAT | O_RDWR, 0644);
 	return (fd);
-}*/
+}
 
 static void	open_file(char *file, header_t *header, t_asm *env)
 {
 
 	env->fd_s = open(file, O_RDONLY);
-	//env->fd_cor = open_core_file(file, env);
-	//ft_printf("fd = %d\n", env->fd_cor);
+	env->fd_cor = open_core_file(file, env);
+	ft_printf("fd = %d\n", env->fd_cor);
 }
 
 int	main(int ac, char **av)
@@ -78,7 +92,12 @@ int	main(int ac, char **av)
 			if (!start_parsing(&header, &env))
 				ft_printf("cur_x = %d\n cur_y = %d\n", env.cur_x, env.cur_y);
 			else
+			{
+				write(env.fd_cor, header.prog_name, PROG_NAME_LENGTH);
+				write(env.fd_cor, header.comment, COMMENT_LENGTH);
+				write(env.fd_cor, env.code, env.index);
 				ft_printf("ASM OK\n");
+			}
 	}
 	return (0);
 }

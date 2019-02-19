@@ -47,10 +47,7 @@ int		ft_live(t_asm *env, int i, char *line)
 	env->cur_x += g_op[i].size;
 	if (!handle_arg(env, &arg, 0, line) || arg.type[0] != DIR_CODE
 			|| arg.nb_arg != 1)
-	{
-	ft_printf("test\n");
 		return (KO);
-	}
 	env->code[env->index++] = 0x01;
 	fill_code(env, arg.type[0], arg.value[0], 4);
 	return (OK);

@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 09:03:47 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/18 18:01:24 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/19 11:33:58 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ int		get_dir(t_asm *env, t_arg *arg, char *line)
 	arg->nb_arg++;
 	if (line[0] == LABEL_CHAR)
 		return (create_label_arg(env, arg, line + 1));
-	return (atoi_v2(line, &arg->value[arg->nb_arg], env));
+	ft_printf("NB AAARAG = %d\n", arg->nb_arg);
+	return (atoi_v2(line, &arg->value[arg->nb_arg - 1], env));
 }
 
 int		get_ind(t_asm *env, t_arg *arg, char *line)
@@ -71,7 +72,7 @@ int		get_ind(t_asm *env, t_arg *arg, char *line)
 	arg->nb_arg++;
 	if (line[0] == LABEL_CHAR)
 		return (create_label_arg(env, arg, line + 1));
-	return (atoi_v2(line, &arg->value[arg->nb_arg], env));
+	return (atoi_v2(line, &arg->value[arg->nb_arg - 1], env));
 }
 
 int		handle_arg(t_asm *env, t_arg *arg, int a, char *line)

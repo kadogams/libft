@@ -77,6 +77,10 @@ int		get_label(t_asm *env, int j, int i);
 void	fill_code(t_asm *env, int type, int value, int octet);
 int		get_codage(t_arg arg);
 
+
+int		manage_labels(t_asm *env);
+
+
 int		ft_live(t_asm *env, int i, char *line);
 int		ft_ld(t_asm *env, int i, char *line);
 int		ft_st(t_asm *env, int i, char *line);
