@@ -117,7 +117,10 @@ int	start_parsing(header_t *header, t_asm *env)
 	if (!parse_instructions(env))
 		return (KO);
 	if (!manage_labels(env))
+	{
+		ft_printf("labels a return KO\n");
 		return (KO);
+	}
 	ft_printf("\n\n----------index = %d\n", env->index);
 	int	i = -1;
 	while (++i < env->index)

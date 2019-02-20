@@ -11,7 +11,25 @@
 /* ************************************************************************** */
 
 #include "asm.h"
+int	ft_strchri(t_asm *env)
+{
+	int		i;
+	char	*tmp;
 
+	i = 0;
+	tmp =  NULL;
+	while (env->line[i])
+	{
+		if (env->line[i] == COMMENT_CHAR)
+			break;
+		i++;
+	}
+	if ((tmp = ft_strsub(env->line, 0, i)) == NULL)
+		return (-1);
+	free(env->line);
+	env->line = tmp;
+	return (OK);
+}
 int check_space_digit(char *line, t_asm *env)
 {
 	int i;
@@ -76,20 +94,19 @@ int	skip_blank_lines(t_asm *env)
 {
 	int		ret;
 	int		i;
+
 	while ((ret = get_next_line(env->fd_s, &env->line)) > 0)
 	{
 		env->cur_x = 0;
 		env->cur_y += 1;
 		i = skip_whitespace(env->line, env, NO_UPDATE_X);
-		if (env->line[i] == '\0')
+		if (env->line[i] == '\0' || env->line[i] == '#')
 		{
 			ft_strdel(&env->line);
 			continue ;
 		}
 		else
-		{
-			return (1);
-		}
+			return (ft_strchri(env));
 	}
 	if (ret == -1)
 		return (-1);

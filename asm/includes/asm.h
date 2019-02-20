@@ -75,7 +75,7 @@ int		create_label_arg(t_asm *env, t_arg *arg, char *line);
 int		is_label_char(char c);
 void	add_label_arg(t_label_arg *new, t_asm *env);
 void	add_label(t_label *new, t_asm *env);
-int		get_label(t_asm *env, int j, int i);
+int		get_label(t_asm *env, char *line, int i);
 void	fill_code(t_asm *env, int type, int value, int octet);
 int		get_codage(t_arg arg);
 
@@ -103,6 +103,7 @@ int		ft_aff(t_asm *env, int i, char *line);
 
 static const t_op	g_op[] = {
 	{"live", 4, ft_live},
+	{"ldi", 3, ft_ldi},
 	{"ld", 2, ft_ld},
 	{"sti", 3, ft_sti},
 	{"st", 2, ft_st},
@@ -112,7 +113,6 @@ static const t_op	g_op[] = {
 	{"or", 2, ft_or},
 	{"xor", 3, ft_xor},
 	{"zjmp", 4, ft_zjmp},
-	{"ldi", 3, ft_ldi},
 	{"fork", 4, ft_fork},
 	{"lldi", 4, ft_lldi},
 	{"lld", 3, ft_lld},

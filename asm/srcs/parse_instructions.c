@@ -39,19 +39,19 @@ int	search_for_instr(t_asm *env, int i)
 	return (KO);
 }
 
-int	search_label(t_asm *env, int i)
+int	search_label(t_asm *env, char *line)
 {
-	int	j;
+	int	i;
 
-	j = i;
-	while (is_label_char(env->line[i]))
+	i = 0;
+	while (is_label_char(line[i]))
 	{
 		env->cur_x += 1;
 		i++;
 	}
-	if (env->line[i] == LABEL_CHAR)
+	if (line[i] == LABEL_CHAR)
 	{
-		return get_label(env, j, i);
+		return get_label(env, line, i);
 	}
 	return (KO);
 }
@@ -64,23 +64,26 @@ int	parse_instructions(t_asm *env)
 	ft_printf("\n---------parse_instructions---------\n");
 	while ((ret = skip_blank_lines(env)) > 0)
 	{
-		if ((i = skip_whitespace(env->line, env, UPDATE_X)) == -1)
-			return(KO);
-	i = search_label(env, i);
-	if ((ret = skip_whitespace(env->line + i, env, UPDATE_X)) == -1)
-		return (KO);
-	i += ret;
-	if (env->line[i] == '\0')
-		continue ;
-	ret = search_for_instr(env, i);
-	if (ret == KO)
-	{
-		ft_printf("ret a return KO\n");
-		return (KO);
-	}
-	env->cur_x = 0;
-	if (env->index >= CHAMP_MAX_SIZE)
-		return (KO);
+			if ((i = skip_whitespace(env->line, env, UPDATE_X)) == -1)
+				return(KO);
+		i += search_label(env, env->line + i);
+		if ((ret = skip_whitespace(env->line + i, env, UPDATE_X)) == -1)
+			return (KO);
+		i += ret;
+		if (env->line[i] == '\0')
+			continue ;
+		ret = search_for_instr(env, i);
+		if (ret == KO)
+		{
+			ft_printf("ret a return KO\n");
+			return (KO);
+		}
+		env->cur_x = 0;
+		if (env->index >= CHAMP_MAX_SIZE)
+		{
+			ft_printf("champ too big\n");
+			return (KO);
+		}
 	}
 	if (ret == 0)
 		return (OK);

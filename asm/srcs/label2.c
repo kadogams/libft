@@ -12,13 +12,13 @@
 
 #include "asm.h"
 
-int		get_label(t_asm *env, int j, int i)
+int		get_label(t_asm *env, char *line, int i)
 {
 	t_label	*new;
 
 	if (!(new = (t_label*)malloc(sizeof(t_label))))
 		return (KO);
-	new->name = ft_strsub(env->line, j, i - 1);
+	new->name = ft_strsub(line, 0, i);
 	new->index = env->index;
 	new->next = NULL;
 	if (new->name == NULL)
@@ -34,6 +34,7 @@ t_label	*find_label(t_asm *env, char *name)
 	label = env->label;
 	while (label)
 	{
+		ft_printf("ARG label = %s --- Label = %s\n", name, label->name);
 		if (!ft_strcmp(label->name, name))
 			break ;
 		label = label->next;
@@ -59,7 +60,7 @@ int		manage_labels(t_asm *env)
 {
 	t_label_arg	*tmp;
 	t_label		*label;
-	
+
 	tmp = env->label_arg;
 	while (tmp)
 	{
