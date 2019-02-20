@@ -82,6 +82,7 @@ int		get_codage(t_arg arg);
 
 int		manage_labels(t_asm *env);
 
+void	write_cor_file(t_asm *env, header_t *header);
 
 int		ft_live(t_asm *env, int i, char *line);
 int		ft_ld(t_asm *env, int i, char *line);

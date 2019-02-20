@@ -6,7 +6,7 @@
 #    By: aclecler <aclecler@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/18 00:39:00 by aclecler          #+#    #+#              #
-#    Updated: 2019/02/18 17:39:50 by dazheng          ###   ########.fr        #
+#    Updated: 2019/02/20 10:38:57 by dazheng          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ IN =	asm.c\
 		parse_instructions.c\
 		tools.c\
 		tools2.c\
+		write_cor_file.c\
 
 LIBFT = ../libftprintf
 
