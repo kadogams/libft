@@ -12,6 +12,12 @@
 
 #include "asm.h"
 
+int		ft_error_label(char *label)
+{
+	ft_printf("label '%s' not found\n", label);
+	return (KO);
+}
+
 int		get_label(t_asm *env, char *line, int i)
 {
 	t_label	*new;
@@ -34,7 +40,6 @@ t_label	*find_label(t_asm *env, char *name)
 	label = env->label;
 	while (label)
 	{
-		ft_printf("ARG label = %s --- Label = %s\n", name, label->name);
 		if (!ft_strcmp(label->name, name))
 			break ;
 		label = label->next;
@@ -65,7 +70,7 @@ int		manage_labels(t_asm *env)
 	while (tmp)
 	{
 		if (!(label = find_label(env, tmp->label_name)))
-			return (KO);
+			return (ft_error_label(tmp->label_name));
 		fill_label(env, label, tmp);
 		tmp = tmp->next;
 	}

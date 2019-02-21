@@ -24,7 +24,7 @@ void	ft_error2(int option, t_asm *env)
 		ft_printf("'ldi' malformated at line [%d]\nldi: T_REG| T_DIR | "
 		"T_IND, T_REG | T_DIR, T_REG\n", env->cur_y);
 	else if (option == STI)
-		ft_printf("'sti' malformated at line [%d]\nsti: T_REG,"
+		ft_printf("'sti' malformated at line [%d]\nsti: T_REG, "
 		"T_REG| T_DIR | T_IND, T_DIR | T_REG\n", env->cur_y);
 	else if (option == FORK)
 		ft_printf("'fork' malformated at line [%d]\nfork: T_DIR\n", env->cur_y);
