@@ -65,8 +65,8 @@ int	skip_whitespace(char *str, t_asm *env, int update)
 				env->cur_x += 1;
 			continue ;
 		}
-		if (update)
-			env->cur_x += 1;
+		/*if (update)
+			env->cur_x += 1;*/
 		break ;
 	}
 	return (i);
@@ -87,7 +87,7 @@ int		check_last_line(char *line, int option, t_asm *env)
 		return (OK);
 	}
 	ft_strdel(&env->line);
-	return (KO);
+	return (ft_error(1, env));
 }
 
 int	skip_blank_lines(t_asm *env)
@@ -97,7 +97,7 @@ int	skip_blank_lines(t_asm *env)
 
 	while ((ret = get_next_line(env->fd_s, &env->line)) > 0)
 	{
-		env->cur_x = 0;
+		env->cur_x = 1;
 		env->cur_y += 1;
 		i = skip_whitespace(env->line, env, NO_UPDATE_X);
 		if (env->line[i] == '\0' || env->line[i] == '#')

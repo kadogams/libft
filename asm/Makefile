@@ -29,7 +29,7 @@ IN =	asm.c\
 		parse_instructions.c\
 		tools.c\
 		tools2.c\
-		write_cor_file.c\
+		write_cor_file.c
 
 LIBFT = ../libftprintf
 

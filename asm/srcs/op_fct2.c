@@ -17,14 +17,12 @@ int		ft_and(t_asm *env, int i, char *line)
 	int	k;
 	t_arg arg;
 
-	ft_printf("AND\n");
 	init_arg(&arg, 4, 1);
 	line = line + g_op[i].size;
-	ft_printf("LIIIINE DE AND = |%s|\n", line);
 	env->cur_x += g_op[i].size;
 	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 3 || arg.type[2] !=
 	REG_CODE)
-		return (KO);
+		return (ft_error(AND, env));
 	k = -1;
 	env->code[env->index++] = 0x06;
 	env->code[env->index++] = get_codage(arg);
@@ -38,13 +36,12 @@ int		ft_or(t_asm *env, int i, char *line)
 	int	k;
 	t_arg arg;
 
-	ft_printf("OR\n");
 	init_arg(&arg, 4, 1);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
 	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 3 || arg.type[2] !=
 	REG_CODE)
-		return (KO);
+		return (ft_error(OR, env));
 	k = -1;
 	env->code[env->index++] = 0x07;
 	env->code[env->index++] = get_codage(arg);
@@ -59,13 +56,12 @@ int		ft_xor(t_asm *env, int i, char *line)
 	int	k;
 	t_arg arg;
 
-	ft_printf("XOR\n");
 	init_arg(&arg, 4, 1);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
 	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 3 || arg.type[2] !=
 	REG_CODE)
-		return (KO);
+		return (ft_error(XOR, env));
 	k = -1;
 	env->code[env->index++] = 0x08;
 	env->code[env->index++] = get_codage(arg);
@@ -79,13 +75,12 @@ int		ft_zjmp(t_asm *env, int i, char *line)
 	int	k;
 	t_arg arg;
 
-	ft_printf("ZJMP\n");
 	init_arg(&arg, 2, 0);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
 	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 1 ||
 	arg.type[0] != DIR_CODE)
-		return (KO);
+		return (ft_error(ZJMP, env));
 	k = -1;
 	env->code[env->index++] = 0x09;
 	while (++k < arg.nb_arg)
@@ -98,13 +93,12 @@ int		ft_ldi(t_asm *env, int i, char *line)
 	int	k;
 	t_arg arg;
 
-	ft_printf("LDI\n");
 	init_arg(&arg, 2, 1);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
-	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 3 || (arg.type[1] != 
+	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 3 || (arg.type[1] !=
 	REG_CODE && arg.type[1] != DIR_CODE) || arg.type[2] != REG_CODE)
-		return (KO);
+		return (ft_error(LDI, env));
 	k = -1;
 	env->code[env->index++] = 0x0A;
 	env->code[env->index++] = get_codage(arg);

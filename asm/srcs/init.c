@@ -15,7 +15,7 @@
 int		init_env(t_asm *env)
 {
 	env->line = NULL;
-	env->cur_x = 0;
+	env->cur_x = 1;
 	env->cur_y = 0;
 	ft_bzero(env->code, CHAMP_MAX_SIZE);
 	env->index = 0;

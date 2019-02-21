@@ -17,13 +17,12 @@ int		ft_sti(t_asm *env, int i, char *line)
 	int	k;
 	t_arg arg;
 
-	ft_printf("STI\n");
 	init_arg(&arg, 2, 1);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
 	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 3 || arg.type[0] !=
 	REG_CODE || (arg.type[2] != DIR_CODE && arg.type[2] != REG_CODE))
-		return (KO);
+		return (ft_error(STI, env));
 	k = -1;
 	env->code[env->index++] = 0x0B;
 	env->code[env->index++] = get_codage(arg);
@@ -37,13 +36,12 @@ int		ft_fork(t_asm *env, int i, char *line)
 	int	k;
 	t_arg arg;
 
-	ft_printf("FORK\n");
 	init_arg(&arg, 2, 0);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
 	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 1 || arg.type[0] !=
 	DIR_CODE)
-		return (KO);
+		return (ft_error(FORK, env));
 	k = -1;
 	env->code[env->index++] = 0x0C;
 	while (++k < arg.nb_arg)
@@ -56,13 +54,12 @@ int		ft_lld(t_asm *env, int i, char *line)
 	int	k;
 	t_arg arg;
 
-	ft_printf("LLD\n");
 	init_arg(&arg, 4, 1);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
 	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 2 || (arg.type[0] !=
 	DIR_CODE && arg.type[0] != IND_CODE) || arg.type[1] != REG_CODE)
-		return (KO);
+		return (ft_error(LLD, env));
 	k = -1;
 	env->code[env->index++] = 0x0D;
 	env->code[env->index++] = get_codage(arg);
@@ -76,13 +73,12 @@ int		ft_lldi(t_asm *env, int i, char *line)
 	int	k;
 	t_arg arg;
 
-	ft_printf("LLDI\n");
 	init_arg(&arg, 2, 1);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
 	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 3 || (arg.type[1] !=
 	REG_CODE && arg.type[1] != DIR_CODE) || arg.type[2] != REG_CODE)
-		return (KO);
+		return (ft_error(LLDI, env));
 	k = -1;
 	env->code[env->index++] = 0x0E;
 	env->code[env->index++] = get_codage(arg);
@@ -96,13 +92,12 @@ int		ft_lfork(t_asm *env, int i, char *line)
 	int	k;
 	t_arg arg;
 
-	ft_printf("LFORK\n");
 	init_arg(&arg, 2, 0);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
 	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 1 || arg.type[0] !=
 	DIR_CODE)
-		return (KO);
+		return (ft_error(LFORK, env));
 	k = -1;
 	env->code[env->index++] = 0x0F;
 	while (++k < arg.nb_arg)

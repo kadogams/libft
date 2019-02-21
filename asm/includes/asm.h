@@ -8,6 +8,24 @@
 #define NO_UPDATE_X 0
 #define INSTR_SIZE 16
 
+#define LIVE 2
+#define INSTR 3
+#define LD 4
+#define ADD 5
+#define ST 6
+#define SUB 7
+#define AND 8
+#define OR 9
+#define XOR 10
+#define ZJMP 11
+#define LDI 12
+#define STI 13
+#define FORK 14
+#define LLD 15
+#define LLDI 16
+#define LFORK 17
+#define AFF 18
+
 typedef struct	s_asm
 {
 	int					cur_x;
@@ -78,7 +96,7 @@ void	add_label(t_label *new, t_asm *env);
 int		get_label(t_asm *env, char *line, int i);
 void	fill_code(t_asm *env, int type, int value, int octet);
 int		get_codage(t_arg arg);
-
+int		ft_error(int option, t_asm *env);
 
 int		manage_labels(t_asm *env);
 

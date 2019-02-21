@@ -36,7 +36,7 @@ int	search_for_instr(t_asm *env, int i)
 		k = 0;
 		j++;
 	}
-	return (KO);
+	return (ft_error(INSTR, env));
 }
 
 int	search_label(t_asm *env, char *line)
@@ -61,7 +61,6 @@ int	parse_instructions(t_asm *env)
 	int		i;
 	int	ret;
 
-	ft_printf("\n---------parse_instructions---------\n");
 	while ((ret = skip_blank_lines(env)) > 0)
 	{
 			if ((i = skip_whitespace(env->line, env, UPDATE_X)) == -1)
@@ -74,16 +73,10 @@ int	parse_instructions(t_asm *env)
 			continue ;
 		ret = search_for_instr(env, i);
 		if (ret == KO)
-		{
-			ft_printf("ret a return KO\n");
 			return (KO);
-		}
 		env->cur_x = 0;
 		if (env->index >= CHAMP_MAX_SIZE)
-		{
-			ft_printf("champ too big\n");
-			return (KO);
-		}
+			return (ft_error(CHAMP_MAX_SIZE, env));
 	}
 	if (ret == 0)
 		return (OK);

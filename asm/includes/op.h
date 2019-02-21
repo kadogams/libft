@@ -36,6 +36,7 @@
 
 #define COMMENT_CHAR			'#'
 #define LABEL_CHAR				':'
+#define REG_CHAR				'r'
 #define DIRECT_CHAR				'%'
 #define SEPARATOR_CHAR			','
 

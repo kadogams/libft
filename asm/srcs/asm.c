@@ -56,12 +56,12 @@ int			main(int ac, char **av)
 		if ((env.fd_s = open(av[1], O_RDONLY)) == -1)
 			return (KO);
 		if (!start_parsing(&header, &env))
-			ft_printf("cur_x = %d\n cur_y = %d\n", env.cur_x, env.cur_y);
+			return (KO);
 		else
 		{
 			open_cor_file(av[1], &env);
 			write_cor_file(&env, &header);
-			ft_printf("ASM OK\n");
+			ft_printf("Writing output program to %s\n", env.output);
 		}
 	}
 	return (0);

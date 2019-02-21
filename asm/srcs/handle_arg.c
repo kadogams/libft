@@ -40,7 +40,6 @@ int		atoi_v2(char *str, int *nb, t_asm *env)
 
 int		get_reg(t_asm *env, t_arg *arg, char *line)
 {
-	ft_printf("Get_reg\n");
 	if (arg->nb_arg == 3)
 		return (KO);
 	arg->type[arg->nb_arg] = REG_CODE;
@@ -52,20 +51,17 @@ int		get_reg(t_asm *env, t_arg *arg, char *line)
 
 int		get_dir(t_asm *env, t_arg *arg, char *line)
 {
-	ft_printf("get dir\n");
 	if (arg->nb_arg == 3)
 		return (KO);
 	arg->type[arg->nb_arg] = DIR_CODE;
 	arg->nb_arg++;
 	if (line[0] == LABEL_CHAR)
 		return (create_label_arg(env, arg, line + 1));
-	ft_printf("NB AAARAG = %d\n", arg->nb_arg);
 	return (atoi_v2(line, &arg->value[arg->nb_arg - 1], env));
 }
 
 int		get_ind(t_asm *env, t_arg *arg, char *line)
 {
-	ft_printf("get ind\n");
 	if (arg->nb_arg == 3)
 		return (KO);
 	arg->type[arg->nb_arg] = IND_CODE;
@@ -81,7 +77,6 @@ int		handle_arg(t_asm *env, t_arg *arg, int a, char *line)
 	int	i;
 
 	i = 0;
-	ft_printf("\nHandle_arg line = %s\n\n", line);
 	while (line[i])
 	{
 		if ((ret = skip_whitespace(line + i, env, UPDATE_X)) == -1)

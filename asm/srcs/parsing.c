@@ -56,13 +56,13 @@ int	parse_comment(header_t *header, t_asm *env)
 	ft_bzero(header->comment, COMMENT_LENGTH);
 	if (!skip_blank_lines(env) || (i = skip_whitespace(env->line, env, UPDATE_X))
 	 == -1 || ft_strncmp(env->line + i, ".comment", 8))
-		return (KO);
+		return (ft_error(1, env));
 	env->cur_x += 8;
 	if	((ret = skip_whitespace(env->line + i + 8, env, UPDATE_X)) == -1)
 	 	return (KO);
 	i = ret + i + 8;
 	if (env->line[i] != '"')
-		return (KO);
+		return (ft_error(1, env));
 	env->cur_x += 1;
 	if ((ret = fill_comment(header, env, env->line + i + 1)) == 1)
 		return (check_last_line(env->line, 1, env));
@@ -74,7 +74,7 @@ int	parse_comment(header_t *header, t_asm *env)
 			return (check_last_line(env->line, 0, env));
 		ft_strdel(&env->line);
 	}
-	return (KO);
+	return (ft_error(1, env));
 }
 
 int	parse_name(header_t *header, t_asm *env)
@@ -85,14 +85,14 @@ int	parse_name(header_t *header, t_asm *env)
 	ft_bzero(header->prog_name, PROG_NAME_LENGTH);
 	if (!skip_blank_lines(env) || (i = skip_whitespace(env->line, env, UPDATE_X))
 	 == -1 || ft_strncmp(env->line + i, ".name", 5))
-		return (KO);
+		return (ft_error(1, env));
 	env->cur_x += 5;
 	if ((ret = skip_whitespace(env->line + i + 5, env, UPDATE_X)) == -1)
 	 	return (KO);
 	i = ret + i + 5;
 	if (env->line[i] != '"')
-		return (KO);
-	//env->cur_x += 1;
+		return (ft_error(1, env));
+	env->cur_x += 1;
 	if ((ret = fill_prog_name(header, env, env->line + i + 1)) == 1)
 		return (check_last_line(env->line, 1, env));
 	while (ret != -1 && get_next_line(env->fd_s, &env->line) > 0)
@@ -103,28 +103,18 @@ int	parse_name(header_t *header, t_asm *env)
 			return (check_last_line(env->line, 0, env));
 		ft_strdel(&env->line);
 	}
-	return (KO);
+	return (ft_error(1, env));
 }
 
 int	start_parsing(header_t *header, t_asm *env)
 {
 	if (!parse_name(header, env))
 		return (KO);
-	ft_printf("Prog name = |%s|\n", header->prog_name);
 	if (!parse_comment(header, env))
 		return (KO);
-	ft_printf("comment = |%s|\n", header->comment);
 	if (!parse_instructions(env))
 		return (KO);
 	if (!manage_labels(env))
-	{
-		ft_printf("labels a return KO\n");
 		return (KO);
-	}
-	ft_printf("\n\n----------index = %d\n", env->index);
-	int	i = -1;
-	while (++i < env->index)
-		ft_printf("%c", env->code[i]);
-	ft_printf("\n");
 	return (OK);
 }
