@@ -6,13 +6,13 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:03:49 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/18 18:21:54 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/21 10:15:46 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int	init_env(t_asm *env)
+int		init_env(t_asm *env)
 {
 	env->line = NULL;
 	env->cur_x = 0;
@@ -20,7 +20,7 @@ int	init_env(t_asm *env)
 	ft_bzero(env->code, CHAMP_MAX_SIZE);
 	env->index = 0;
 	env->label = NULL;
-	env->label_arg = NULL; 
+	env->label_arg = NULL;
 	return (1);
 }
 
