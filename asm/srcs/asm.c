@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 13:21:39 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 17:42:19 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/22 17:58:40 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ int			main(int ac, char **av)
 	}
 	else
 		return (ft_error(USAGE, &env));
+	free_all(&env);
 	return (0);
 }

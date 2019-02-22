@@ -6,7 +6,7 @@
 #    By: aclecler <aclecler@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/18 00:39:00 by aclecler          #+#    #+#              #
-#    Updated: 2019/02/22 17:19:57 by dazheng          ###   ########.fr        #
+#    Updated: 2019/02/22 17:59:46 by dazheng          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ CC = gcc
 
 IN =	asm.c\
 		error.c\
+		free_all.c\
 		init.c\
 		handle_arg.c\
 		label.c\
