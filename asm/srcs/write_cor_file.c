@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 10:28:41 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 17:31:12 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/22 17:44:06 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	write_magic_size(t_asm *env)
 	}
 }
 
-void		write_cor_file(t_asm *env, header_t *header)
+void		write_cor_file(t_asm *env, t_header *header)
 {
 	int	i;
 

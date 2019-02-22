@@ -6,13 +6,13 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 16:50:48 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 17:22:11 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/22 17:43:34 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static int	fill_prog_name(header_t *header, t_asm *env, char *line)
+static int	fill_prog_name(t_header *header, t_asm *env, char *line)
 {
 	static int	index = 0;
 	int			i;
@@ -30,7 +30,7 @@ static int	fill_prog_name(header_t *header, t_asm *env, char *line)
 	return (0);
 }
 
-static int	fill_comment(header_t *header, t_asm *env, char *line)
+static int	fill_comment(t_header *header, t_asm *env, char *line)
 {
 	static int	index = 0;
 	int			i;
@@ -48,7 +48,7 @@ static int	fill_comment(header_t *header, t_asm *env, char *line)
 	return (0);
 }
 
-static int	parse_comment(header_t *header, t_asm *env)
+static int	parse_comment(t_header *header, t_asm *env)
 {
 	int		ret;
 	int		i;
@@ -77,7 +77,7 @@ static int	parse_comment(header_t *header, t_asm *env)
 	return (ft_error(1, env));
 }
 
-static int	parse_name(header_t *header, t_asm *env)
+static int	parse_name(t_header *header, t_asm *env)
 {
 	int		ret;
 	int		i;
@@ -106,7 +106,7 @@ static int	parse_name(header_t *header, t_asm *env)
 	return (ft_error(1, env));
 }
 
-int			start_parsing(header_t *header, t_asm *env)
+int			start_parsing(t_header *header, t_asm *env)
 {
 	if (!parse_name(header, env))
 		return (KO);

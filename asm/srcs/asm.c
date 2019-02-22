@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 13:21:39 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 17:25:59 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/22 17:42:19 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	open_cor_file(char *file, t_asm *env)
 
 int			main(int ac, char **av)
 {
-	header_t	header;
+	t_header	header;
 	t_asm		env;
 
 	if (ac == 2 && check_valid(av[1]))
