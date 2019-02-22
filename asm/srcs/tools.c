@@ -6,22 +6,23 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 16:46:24 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/18 14:24:54 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/22 14:18:17 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
 int	ft_strchri(t_asm *env)
 {
 	int		i;
 	char	*tmp;
 
 	i = 0;
-	tmp =  NULL;
+	tmp = NULL;
 	while (env->line[i])
 	{
 		if (env->line[i] == COMMENT_CHAR)
-			break;
+			break ;
 		i++;
 	}
 	if ((tmp = ft_strsub(env->line, 0, i)) == NULL)
@@ -30,9 +31,10 @@ int	ft_strchri(t_asm *env)
 	env->line = tmp;
 	return (OK);
 }
-int check_space_digit(char *line, t_asm *env)
+
+int	check_space_digit(char *line, t_asm *env)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i])
@@ -40,7 +42,7 @@ int check_space_digit(char *line, t_asm *env)
 		if (ft_isdigit(line[i]))
 			i++;
 		else
-			break;
+			break ;
 	}
 	i += skip_whitespace(line + i, env, UPDATE_X);
 	if (line[i] == '\0')
@@ -72,7 +74,7 @@ int	skip_whitespace(char *str, t_asm *env, int update)
 	return (i);
 }
 
-int		check_last_line(char *line, int option, t_asm *env)
+int	check_last_line(char *line, int option, t_asm *env)
 {
 	char	*str;
 	int		i;

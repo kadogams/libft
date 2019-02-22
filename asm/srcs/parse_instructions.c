@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 14:35:09 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/18 18:16:34 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/22 14:09:17 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,20 @@ int	search_label(t_asm *env, char *line)
 	}
 	if (line[i] == LABEL_CHAR)
 	{
-		return get_label(env, line, i);
+		return (get_label(env, line, i));
 	}
 	return (KO);
 }
 
 int	parse_instructions(t_asm *env)
 {
-	int		i;
+	int	i;
 	int	ret;
 
 	while ((ret = skip_blank_lines(env)) > 0)
 	{
-			if ((i = skip_whitespace(env->line, env, UPDATE_X)) == -1)
-				return(KO);
+		if ((i = skip_whitespace(env->line, env, UPDATE_X)) == -1)
+			return (KO);
 		i += search_label(env, env->line + i);
 		if ((ret = skip_whitespace(env->line + i, env, UPDATE_X)) == -1)
 			return (KO);

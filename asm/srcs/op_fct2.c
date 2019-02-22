@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 17:01:42 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/18 18:14:05 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/22 14:10:06 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int		ft_and(t_asm *env, int i, char *line)
 {
-	int	k;
-	t_arg arg;
+	int		k;
+	t_arg	arg;
 
 	init_arg(&arg, 4, 1);
 	line = line + g_op[i].size;
@@ -33,8 +33,8 @@ int		ft_and(t_asm *env, int i, char *line)
 
 int		ft_or(t_asm *env, int i, char *line)
 {
-	int	k;
-	t_arg arg;
+	int		k;
+	t_arg	arg;
 
 	init_arg(&arg, 4, 1);
 	line = line + g_op[i].size;
@@ -48,13 +48,12 @@ int		ft_or(t_asm *env, int i, char *line)
 	while (++k < arg.nb_arg)
 		fill_code(env, arg.type[k], arg.value[k], 4);
 	return (OK);
-
 }
 
 int		ft_xor(t_asm *env, int i, char *line)
 {
-	int	k;
-	t_arg arg;
+	int		k;
+	t_arg	arg;
 
 	init_arg(&arg, 4, 1);
 	line = line + g_op[i].size;
@@ -72,8 +71,8 @@ int		ft_xor(t_asm *env, int i, char *line)
 
 int		ft_zjmp(t_asm *env, int i, char *line)
 {
-	int	k;
-	t_arg arg;
+	int		k;
+	t_arg	arg;
 
 	init_arg(&arg, 2, 0);
 	line = line + g_op[i].size;
@@ -90,8 +89,8 @@ int		ft_zjmp(t_asm *env, int i, char *line)
 
 int		ft_ldi(t_asm *env, int i, char *line)
 {
-	int	k;
-	t_arg arg;
+	int		k;
+	t_arg	arg;
 
 	init_arg(&arg, 2, 1);
 	line = line + g_op[i].size;

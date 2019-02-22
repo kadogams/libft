@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 09:03:47 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/19 11:33:58 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/22 14:07:14 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ int		atoi_v2(char *str, int *nb, t_asm *env)
 	while (str[i] && ft_isdigit(str[i]))
 	{
 		*nb = *nb * 10 + str[i] - '0';
-		env->cur_x +=1;
+		env->cur_x += 1;
 		i++;
 	}
+	*nb = *nb * neg;
 	i += skip_whitespace(str + i, env, NO_UPDATE_X);
 	if (str[i] == '\0' || str[i] == ',')
 		return (OK);

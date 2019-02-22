@@ -6,13 +6,13 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 16:50:48 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/19 11:12:35 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/22 16:02:31 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int		fill_prog_name(header_t *header, t_asm *env, char *line)
+int	fill_prog_name(header_t *header, t_asm *env, char *line)
 {
 	static int	index = 0;
 	int			i;
@@ -30,7 +30,7 @@ int		fill_prog_name(header_t *header, t_asm *env, char *line)
 	return (0);
 }
 
-int		fill_comment(header_t *header, t_asm *env, char *line)
+int	fill_comment(header_t *header, t_asm *env, char *line)
 {
 	static int	index = 0;
 	int			i;
@@ -54,12 +54,12 @@ int	parse_comment(header_t *header, t_asm *env)
 	int		i;
 
 	ft_bzero(header->comment, COMMENT_LENGTH);
-	if (!skip_blank_lines(env) || (i = skip_whitespace(env->line, env, UPDATE_X))
-	 == -1 || ft_strncmp(env->line + i, ".comment", 8))
+	if (!skip_blank_lines(env) || (i = skip_whitespace(env->line, env,
+	UPDATE_X)) == -1 || ft_strncmp(env->line + i, ".comment", 8))
 		return (ft_error(1, env));
 	env->cur_x += 8;
-	if	((ret = skip_whitespace(env->line + i + 8, env, UPDATE_X)) == -1)
-	 	return (KO);
+	if ((ret = skip_whitespace(env->line + i + 8, env, UPDATE_X)) == -1)
+		return (KO);
 	i = ret + i + 8;
 	if (env->line[i] != '"')
 		return (ft_error(1, env));
@@ -83,12 +83,12 @@ int	parse_name(header_t *header, t_asm *env)
 	int		i;
 
 	ft_bzero(header->prog_name, PROG_NAME_LENGTH);
-	if (!skip_blank_lines(env) || (i = skip_whitespace(env->line, env, UPDATE_X))
-	 == -1 || ft_strncmp(env->line + i, ".name", 5))
+	if (!skip_blank_lines(env) || (i = skip_whitespace(env->line, env,
+	UPDATE_X)) == -1 || ft_strncmp(env->line + i, ".name", 5))
 		return (ft_error(1, env));
 	env->cur_x += 5;
 	if ((ret = skip_whitespace(env->line + i + 5, env, UPDATE_X)) == -1)
-	 	return (KO);
+		return (KO);
 	i = ret + i + 5;
 	if (env->line[i] != '"')
 		return (ft_error(1, env));

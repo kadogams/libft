@@ -6,13 +6,13 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 13:21:39 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/21 10:15:27 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/22 14:15:00 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-//TODO COMMENTAIRE + GESTION ERREUR
+//TODO registre > 16 et valeur de dir et ind > max int
 
 static int	check_valid(char *file)
 {
@@ -54,7 +54,7 @@ int			main(int ac, char **av)
 	{
 		init_env(&env);
 		if ((env.fd_s = open(av[1], O_RDONLY)) == -1)
-			return (KO);
+			return (ft_error(READ, &env));
 		if (!start_parsing(&header, &env))
 			return (KO);
 		else
@@ -64,5 +64,7 @@ int			main(int ac, char **av)
 			ft_printf("Writing output program to %s\n", env.output);
 		}
 	}
+	else
+		return (ft_error(USAGE, &env));
 	return (0);
 }

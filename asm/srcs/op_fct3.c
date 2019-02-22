@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 17:22:53 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/18 18:14:41 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/22 14:10:51 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int		ft_sti(t_asm *env, int i, char *line)
 {
-	int	k;
-	t_arg arg;
+	int		k;
+	t_arg	arg;
 
 	init_arg(&arg, 2, 1);
 	line = line + g_op[i].size;
@@ -33,8 +33,8 @@ int		ft_sti(t_asm *env, int i, char *line)
 
 int		ft_fork(t_asm *env, int i, char *line)
 {
-	int	k;
-	t_arg arg;
+	int		k;
+	t_arg	arg;
 
 	init_arg(&arg, 2, 0);
 	line = line + g_op[i].size;
@@ -51,8 +51,8 @@ int		ft_fork(t_asm *env, int i, char *line)
 
 int		ft_lld(t_asm *env, int i, char *line)
 {
-	int	k;
-	t_arg arg;
+	int		k;
+	t_arg	arg;
 
 	init_arg(&arg, 4, 1);
 	line = line + g_op[i].size;
@@ -70,8 +70,8 @@ int		ft_lld(t_asm *env, int i, char *line)
 
 int		ft_lldi(t_asm *env, int i, char *line)
 {
-	int	k;
-	t_arg arg;
+	int		k;
+	t_arg	arg;
 
 	init_arg(&arg, 2, 1);
 	line = line + g_op[i].size;
@@ -89,8 +89,8 @@ int		ft_lldi(t_asm *env, int i, char *line)
 
 int		ft_lfork(t_asm *env, int i, char *line)
 {
-	int	k;
-	t_arg arg;
+	int		k;
+	t_arg	arg;
 
 	init_arg(&arg, 2, 0);
 	line = line + g_op[i].size;

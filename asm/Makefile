@@ -6,7 +6,7 @@
 #    By: aclecler <aclecler@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/18 00:39:00 by aclecler          #+#    #+#              #
-#    Updated: 2019/02/20 10:38:57 by dazheng          ###   ########.fr        #
+#    Updated: 2019/02/22 14:14:07 by dazheng          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ CC = gcc
 #FLAGS = -O3 -Wall -Wextra -Werror
 
 IN =	asm.c\
+		error.c\
 		init.c\
 		handle_arg.c\
 		label.c\

@@ -25,6 +25,8 @@
 #define LLDI 16
 #define LFORK 17
 #define AFF 18
+#define READ 19
+#define USAGE 20
 
 typedef struct	s_asm
 {
@@ -101,6 +103,10 @@ int		ft_error(int option, t_asm *env);
 int		manage_labels(t_asm *env);
 
 void	write_cor_file(t_asm *env, header_t *header);
+
+/*
+ ** op_fct.c
+ */
 
 int		ft_live(t_asm *env, int i, char *line);
 int		ft_ld(t_asm *env, int i, char *line);
