@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 17:32:04 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 14:07:25 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/22 17:33:45 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,38 @@ int		ft_aff(t_asm *env, int i, char *line)
 	while (++k < arg.nb_arg)
 		fill_code(env, arg.type[k], arg.value[k], 0);
 	return (OK);
+}
+
+int		get_codage(t_arg arg)
+{
+	int	res;
+
+	res = (arg.type[0] & 0b11111111) << 6;
+	res += (arg.type[1] & 0b11111111) << 4;
+	res += (arg.type[2] & 0b11111111) << 2;
+	return (res);
+}
+
+void	fill_code(t_asm *env, int type, int value, int octet)
+{
+	int	bits;
+
+	if (type == 1)
+		env->code[env->index++] = value;
+	else if (type == 3)
+	{
+		env->code[env->index++] = (value >> 8) & 0b11111111;
+		env->code[env->index++] = value & 0b11111111;
+	}
+	else if (type == 2)
+	{
+		bits = octet == 2 ? 8 : 24;
+		while (bits >= 0)
+		{
+			env->code[env->index++] = (value >> bits) & 0b11111111;
+			bits -= 8;
+		}
+	}
+	else
+		return ;
 }

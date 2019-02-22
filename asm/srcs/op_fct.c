@@ -1,44 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   op_fct.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/22 17:03:57 by dazheng           #+#    #+#             */
+/*   Updated: 2019/02/22 17:33:36 by dazheng          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
-
-int		get_codage(t_arg arg)
-{
-	int	res;
-
-	res = (arg.type[0] & 0b11111111) << 6;
-	res += (arg.type[1] & 0b11111111) << 4;
-	res += (arg.type[2] & 0b11111111) << 2;
-	return (res);
-}
-
-void	fill_code(t_asm *env, int type, int value, int octet)
-{
-	int	bits;
-
-	if (type == 1)
-		env->code[env->index++] = value;
-	else if (type == 3)
-	{
-		env->code[env->index++] = (value >> 8) & 0b11111111;
-		env->code[env->index++] = value & 0b11111111;
-	}
-	else if (type == 2)
-	{
-		bits = octet == 2 ? 8 : 24;
-		while (bits >= 0)
-		{
-			env->code[env->index++] = (value >> bits) & 0b11111111;
-			bits -= 8;
-		}
-	}
-	else
-		return ;
-}
 
 int		ft_live(t_asm *env, int i, char *line)
 {
 	int		k;
-
 	t_arg	arg;
+
 	init_arg(&arg, 4, 0);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
@@ -52,8 +30,8 @@ int		ft_live(t_asm *env, int i, char *line)
 
 int		ft_ld(t_asm *env, int i, char *line)
 {
-	int	k;
-	t_arg arg;
+	int		k;
+	t_arg	arg;
 
 	init_arg(&arg, 4, 1);
 	line = line + g_op[i].size;
@@ -72,8 +50,8 @@ int		ft_ld(t_asm *env, int i, char *line)
 
 int		ft_st(t_asm *env, int i, char *line)
 {
-	int	k;
-	t_arg arg;
+	int		k;
+	t_arg	arg;
 
 	init_arg(&arg, 4, 1);
 	line = line + g_op[i].size;
@@ -92,8 +70,8 @@ int		ft_st(t_asm *env, int i, char *line)
 
 int		ft_add(t_asm *env, int i, char *line)
 {
-	int	k;
-	t_arg arg;
+	int		k;
+	t_arg	arg;
 
 	init_arg(&arg, 0, 1);
 	line = line + g_op[i].size;
@@ -112,8 +90,8 @@ int		ft_add(t_asm *env, int i, char *line)
 
 int		ft_sub(t_asm *env, int i, char *line)
 {
-	int	k;
-	t_arg arg;
+	int		k;
+	t_arg	arg;
 
 	init_arg(&arg, 0, 1);
 	line = line + g_op[i].size;

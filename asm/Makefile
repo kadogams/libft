@@ -6,7 +6,7 @@
 #    By: aclecler <aclecler@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/18 00:39:00 by aclecler          #+#    #+#              #
-#    Updated: 2019/02/22 14:14:07 by dazheng          ###   ########.fr        #
+#    Updated: 2019/02/22 17:19:57 by dazheng          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ IN =	asm.c\
 		init.c\
 		handle_arg.c\
 		label.c\
-		label2.c\
+		label_management.c\
+		label_tools.c\
 		op_fct.c\
 		op_fct2.c\
 		op_fct3.c\
@@ -29,7 +30,6 @@ IN =	asm.c\
 		parsing.c\
 		parse_instructions.c\
 		tools.c\
-		tools2.c\
 		write_cor_file.c
 
 LIBFT = ../libftprintf

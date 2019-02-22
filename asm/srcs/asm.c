@@ -6,13 +6,14 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 13:21:39 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 14:15:00 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/22 17:25:59 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-//TODO registre > 16 et valeur de dir et ind > max int
+//TODO registre > 16
+//TODO write return error?
 
 static int	check_valid(char *file)
 {
@@ -26,7 +27,7 @@ static int	check_valid(char *file)
 
 //TODO FREE STRJOIN
 
-char		*parse_file_name(char *file)
+static char	*parse_file_name(char *file)
 {
 	char	*name;
 	char	*tmp;
@@ -38,7 +39,7 @@ char		*parse_file_name(char *file)
 	return (name);
 }
 
-int			open_cor_file(char *file, t_asm *env)
+static int	open_cor_file(char *file, t_asm *env)
 {
 	env->output = parse_file_name(file);
 	env->fd_cor = open(env->output, O_CREAT | O_RDWR, 0644);

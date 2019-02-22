@@ -80,32 +80,76 @@ typedef struct		s_op
 	int				(*ptr_fct)(t_asm *env, int i, char *line);
 }					t_op;
 
+/*
+** error.c
+*/
 
-int		init_env(t_asm *env);
-int		skip_whitespace(char *str, t_asm *env, int update);
-int		check_last_line(char *line, int option, t_asm *env);
-int		check_space_digit(char *line, t_asm *env);
-int		skip_blank_lines(t_asm *env);
-int 	start_parsing(header_t *header, t_asm *env);
-void	init_arg(t_arg *arg, int dir_size, int oct_codage);
-int		handle_arg(t_asm *env, t_arg *arg, int i, char *line);
-void	fill_code(t_asm *env, int type, int value, int octet);
-int		parse_instructions(t_asm *env);
-int		create_label_arg(t_asm *env, t_arg *arg, char *line);
-int		is_label_char(char c);
-void	add_label_arg(t_label_arg *new, t_asm *env);
-void	add_label(t_label *new, t_asm *env);
-int		get_label(t_asm *env, char *line, int i);
-void	fill_code(t_asm *env, int type, int value, int octet);
-int		get_codage(t_arg arg);
 int		ft_error(int option, t_asm *env);
 
+/*
+** handle_arg.c
+*/
+
+int		handle_arg(t_asm *env, t_arg *arg, int i, char *line);
+
+/*
+** init.c
+*/
+
+int		init_env(t_asm *env);
+void	init_arg(t_arg *arg, int dir_size, int oct_codage);
+
+/*
+** label.c
+*/
+
+int		create_label_arg(t_asm *env, t_arg *arg, char *line);
+
+/*
+** label_management.c
+*/
+
 int		manage_labels(t_asm *env);
+
+
+/*
+** label_tools.c
+*/
+
+int		create_label(t_asm *env, char *line, int i);
+void	add_label_arg(t_label_arg *new, t_asm *env);
+void	add_label(t_label *new, t_asm *env);
+int		is_label_char(char c);
+
+/*
+** parse_instructions.c
+*/
+
+int		parse_instructions(t_asm *env);
+
+/*
+** parsing.c
+*/
+
+int 	start_parsing(header_t *header, t_asm *env);
+
+/*
+** tools.c
+*/
+
+int		check_space_digit(char *line, t_asm *env);
+int		skip_whitespace(char *str, t_asm *env, int update);
+int		skip_blank_lines(t_asm *env);
+int		check_last_line(char *line, int option, t_asm *env);
+
+/*
+** write_cor_file.c
+*/
 
 void	write_cor_file(t_asm *env, header_t *header);
 
 /*
- ** op_fct.c
+ ** op_fct functions
  */
 
 int		ft_live(t_asm *env, int i, char *line);
@@ -124,6 +168,8 @@ int		ft_lld(t_asm *env, int i, char *line);
 int		ft_lldi(t_asm *env, int i, char *line);
 int		ft_lfork(t_asm *env, int i, char *line);
 int		ft_aff(t_asm *env, int i, char *line);
+void	fill_code(t_asm *env, int type, int value, int octet);
+int		get_codage(t_arg arg);
 
 static const t_op	g_op[] = {
 	{"live", 4, ft_live},
@@ -143,5 +189,3 @@ static const t_op	g_op[] = {
 	{"lfork", 5, ft_lfork},
 	{"aff", 3, ft_aff}
 };
-
-void	quit(t_asm *env);

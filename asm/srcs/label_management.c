@@ -6,34 +6,19 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:58:56 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/19 11:16:54 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/22 17:32:14 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int		ft_error_label(char *label)
+static int		ft_error_label(char *label)
 {
 	ft_printf("label '%s' not found\n", label);
 	return (KO);
 }
 
-int		get_label(t_asm *env, char *line, int i)
-{
-	t_label	*new;
-
-	if (!(new = (t_label*)malloc(sizeof(t_label))))
-		return (KO);
-	new->name = ft_strsub(line, 0, i);
-	new->index = env->index;
-	new->next = NULL;
-	if (new->name == NULL)
-		return (KO);
-	add_label(new, env);
-	return (i + 1);
-}
-
-t_label	*find_label(t_asm *env, char *name)
+static t_label	*find_label(t_asm *env, char *name)
 {
 	t_label	*label;
 
@@ -47,7 +32,7 @@ t_label	*find_label(t_asm *env, char *name)
 	return (label);
 }
 
-void	fill_label(t_asm *env, t_label *label, t_label_arg *arg)
+static void		fill_label(t_asm *env, t_label *label, t_label_arg *arg)
 {
 	int	value;
 	int	bits;
@@ -61,7 +46,7 @@ void	fill_label(t_asm *env, t_label *label, t_label_arg *arg)
 	}
 }
 
-int		manage_labels(t_asm *env)
+int				manage_labels(t_asm *env)
 {
 	t_label_arg	*tmp;
 	t_label		*label;

@@ -6,13 +6,13 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 16:46:24 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 14:18:17 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/22 17:32:34 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int	ft_strchri(t_asm *env)
+static int	ft_strchri(t_asm *env)
 {
 	int		i;
 	char	*tmp;
@@ -32,7 +32,7 @@ int	ft_strchri(t_asm *env)
 	return (OK);
 }
 
-int	check_space_digit(char *line, t_asm *env)
+int			check_space_digit(char *line, t_asm *env)
 {
 	int	i;
 
@@ -50,7 +50,7 @@ int	check_space_digit(char *line, t_asm *env)
 	return (KO);
 }
 
-int	skip_whitespace(char *str, t_asm *env, int update)
+int			skip_whitespace(char *str, t_asm *env, int update)
 {
 	int	i;
 
@@ -67,14 +67,12 @@ int	skip_whitespace(char *str, t_asm *env, int update)
 				env->cur_x += 1;
 			continue ;
 		}
-		/*if (update)
-			env->cur_x += 1;*/
 		break ;
 	}
 	return (i);
 }
 
-int	check_last_line(char *line, int option, t_asm *env)
+int			check_last_line(char *line, int option, t_asm *env)
 {
 	char	*str;
 	int		i;
@@ -92,7 +90,7 @@ int	check_last_line(char *line, int option, t_asm *env)
 	return (ft_error(1, env));
 }
 
-int	skip_blank_lines(t_asm *env)
+int			skip_blank_lines(t_asm *env)
 {
 	int		ret;
 	int		i;

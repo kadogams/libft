@@ -6,13 +6,13 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 11:58:23 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 14:10:21 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/22 17:18:41 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int		get_pos(t_asm *env, t_arg *arg)
+static int	get_pos(t_asm *env, t_arg *arg)
 {
 	int	pos;
 	int	i;
@@ -32,23 +32,7 @@ int		get_pos(t_asm *env, t_arg *arg)
 	return (pos);
 }
 
-int		is_label_char(char c)
-{
-	int	i;
-
-	i = -1;
-	while (LABEL_CHARS[++i])
-	{
-		if (c != LABEL_CHARS[i])
-			continue ;
-		break ;
-	}
-	if (c != '\0' && c == LABEL_CHARS[i])
-		return (OK);
-	return (KO);
-}
-
-char	*get_label_name(t_asm *env, char *line)
+static char	*get_label_name(t_asm *env, char *line)
 {
 	int	i;
 	int	ret;
@@ -64,7 +48,7 @@ char	*get_label_name(t_asm *env, char *line)
 		return (ft_strsub(line, 0, i));
 }
 
-int		get_label_size(t_arg *arg)
+static int	get_label_size(t_arg *arg)
 {
 	if (arg->type[arg->nb_arg - 1] == IND_CODE)
 		return (2);
@@ -72,7 +56,7 @@ int		get_label_size(t_arg *arg)
 		return (arg->dir_size);
 }
 
-int		create_label_arg(t_asm *env, t_arg *arg, char *line)
+int			create_label_arg(t_asm *env, t_arg *arg, char *line)
 {
 	t_label_arg	*new;
 

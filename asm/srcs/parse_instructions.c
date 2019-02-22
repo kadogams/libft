@@ -6,13 +6,13 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 14:35:09 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 14:09:17 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/22 17:21:42 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int	search_for_instr(t_asm *env, int i)
+static int	search_for_instr(t_asm *env, int i)
 {
 	int	start;
 	int j;
@@ -39,7 +39,7 @@ int	search_for_instr(t_asm *env, int i)
 	return (ft_error(INSTR, env));
 }
 
-int	search_label(t_asm *env, char *line)
+static int	search_label(t_asm *env, char *line)
 {
 	int	i;
 
@@ -50,13 +50,11 @@ int	search_label(t_asm *env, char *line)
 		i++;
 	}
 	if (line[i] == LABEL_CHAR)
-	{
-		return (get_label(env, line, i));
-	}
+		return (create_label(env, line, i));
 	return (KO);
 }
 
-int	parse_instructions(t_asm *env)
+int			parse_instructions(t_asm *env)
 {
 	int	i;
 	int	ret;

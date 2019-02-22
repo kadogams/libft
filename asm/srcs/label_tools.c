@@ -6,11 +6,26 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:25:03 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 14:11:19 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/22 17:33:53 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+int		create_label(t_asm *env, char *line, int i)
+{
+	t_label	*new;
+
+	if (!(new = (t_label*)malloc(sizeof(t_label))))
+		return (KO);
+	new->name = ft_strsub(line, 0, i);
+	new->index = env->index;
+	new->next = NULL;
+	if (new->name == NULL)
+		return (KO);
+	add_label(new, env);
+	return (i + 1);
+}
 
 void	add_label_arg(t_label_arg *new, t_asm *env)
 {
@@ -38,4 +53,20 @@ void	add_label(t_label *new, t_asm *env)
 	begin = env->label;
 	new->next = begin;
 	env->label = new;
+}
+
+int		is_label_char(char c)
+{
+	int	i;
+
+	i = -1;
+	while (LABEL_CHARS[++i])
+	{
+		if (c != LABEL_CHARS[i])
+			continue ;
+		break ;
+	}
+	if (c != '\0' && c == LABEL_CHARS[i])
+		return (OK);
+	return (KO);
 }

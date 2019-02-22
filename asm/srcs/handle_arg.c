@@ -6,19 +6,20 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 09:03:47 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 14:07:14 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/22 17:24:12 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-//TODO int max atoiv2?
-int		atoi_v2(char *str, int *nb, t_asm *env)
+static int		atoi_v2(char *str, int *nb, t_asm *env)
 {
-	int	i;
-	int	neg;
+	int			i;
+	long long	res;
+	int			neg;
 
 	i = 0;
+	res = 0;
 	neg = 1;
 	if (str[i] == '-')
 	{
@@ -28,18 +29,17 @@ int		atoi_v2(char *str, int *nb, t_asm *env)
 	}
 	while (str[i] && ft_isdigit(str[i]))
 	{
-		*nb = *nb * 10 + str[i] - '0';
+		res = res * 10 + str[i++] - '0';
+		*nb = res * neg > 9223372036854775807 ? 1 : *nb;
+		*nb = res * neg < -LONG_MAX - 1 ? -1 : *nb;
 		env->cur_x += 1;
-		i++;
 	}
-	*nb = *nb * neg;
+	*nb = *nb == 0 ? res * neg : *nb;
 	i += skip_whitespace(str + i, env, NO_UPDATE_X);
-	if (str[i] == '\0' || str[i] == ',')
-		return (OK);
-	return (KO);
+	return (str[i] == '\0' || str[i] == ',' ? OK : KO);
 }
 
-int		get_reg(t_asm *env, t_arg *arg, char *line)
+static int		get_reg(t_asm *env, t_arg *arg, char *line)
 {
 	if (arg->nb_arg == 3)
 		return (KO);
@@ -50,7 +50,7 @@ int		get_reg(t_asm *env, t_arg *arg, char *line)
 	return (OK);
 }
 
-int		get_dir(t_asm *env, t_arg *arg, char *line)
+static int		get_dir(t_asm *env, t_arg *arg, char *line)
 {
 	if (arg->nb_arg == 3)
 		return (KO);
@@ -61,7 +61,7 @@ int		get_dir(t_asm *env, t_arg *arg, char *line)
 	return (atoi_v2(line, &arg->value[arg->nb_arg - 1], env));
 }
 
-int		get_ind(t_asm *env, t_arg *arg, char *line)
+static int		get_ind(t_asm *env, t_arg *arg, char *line)
 {
 	if (arg->nb_arg == 3)
 		return (KO);
@@ -72,7 +72,7 @@ int		get_ind(t_asm *env, t_arg *arg, char *line)
 	return (atoi_v2(line, &arg->value[arg->nb_arg - 1], env));
 }
 
-int		handle_arg(t_asm *env, t_arg *arg, int a, char *line)
+int				handle_arg(t_asm *env, t_arg *arg, int a, char *line)
 {
 	int	ret;
 	int	i;
