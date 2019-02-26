@@ -29,6 +29,8 @@ static void	ft_error3(int option, t_asm *env)
 		ft_dprintf(2, "Can't read source file\n");
 	else if (option == USAGE)
 		ft_dprintf(2, "Usage: ./asm target_file.s\n");
+	else if (option == REG)
+		ft_dprintf(2, "param reg not correct at line [%d]\n", env->cur_y);
 	else
 		return ;
 }

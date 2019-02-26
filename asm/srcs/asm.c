@@ -35,7 +35,7 @@ static char	*parse_file_name(char *file)
 
 	len = ft_strlen(file);
 	name = ft_strsub(file, 0, len - 2);
-	name = ft_strjoin(name, ".cor");
+	name = ft_strjoin_free_s1(name, ".cor");
 	return (name);
 }
 
@@ -57,7 +57,10 @@ int			main(int ac, char **av)
 		if ((env.fd_s = open(av[1], O_RDONLY)) == -1)
 			return (ft_error(READ, &env));
 		if (!start_parsing(&header, &env))
+		{
+			free_all(&env);
 			return (KO);
+		}
 		else
 		{
 			open_cor_file(av[1], &env);

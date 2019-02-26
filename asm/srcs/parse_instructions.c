@@ -63,14 +63,15 @@ int			parse_instructions(t_asm *env)
 	{
 		if ((i = skip_whitespace(env->line, env, UPDATE_X)) == -1)
 			return (KO);
-		i += search_label(env, env->line + i);
+		if ((ret = search_label(env, env->line + i)) == -1)
+			return (KO);
+		i += ret;
 		if ((ret = skip_whitespace(env->line + i, env, UPDATE_X)) == -1)
 			return (KO);
 		i += ret;
 		if (env->line[i] == '\0')
 			continue ;
-		ret = search_for_instr(env, i);
-		if (ret == KO)
+		if ((ret = search_for_instr(env, i)) == KO)
 			return (KO);
 		env->cur_x = 0;
 		if (env->index >= CHAMP_MAX_SIZE)

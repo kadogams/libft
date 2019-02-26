@@ -46,6 +46,8 @@ static int		get_reg(t_asm *env, t_arg *arg, char *line)
 	arg->type[arg->nb_arg] = REG_CODE;
 	if (!atoi_v2(line, &arg->value[arg->nb_arg], env))
 		return (KO);
+	if (arg->value[arg->nb_arg] < 0 || arg->value[arg->nb_arg] > REG_NUMBER)
+		return (ft_error(REG, env));
 	arg->nb_arg++;
 	return (OK);
 }

@@ -17,12 +17,12 @@ int		create_label(t_asm *env, char *line, int i)
 	t_label	*new;
 
 	if (!(new = (t_label*)malloc(sizeof(t_label))))
-		return (KO);
+		return (-1);
 	new->name = ft_strsub(line, 0, i);
 	new->index = env->index;
 	new->next = NULL;
 	if (new->name == NULL)
-		return (KO);
+		return (-1);
 	add_label(new, env);
 	return (i + 1);
 }

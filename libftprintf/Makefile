@@ -6,7 +6,7 @@
 #    By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/13 15:03:00 by skadogam          #+#    #+#              #
-#    Updated: 2019/02/07 11:57:22 by skadogam         ###   ########.fr        #
+#    Updated: 2019/02/22 12:47:27 by skadogam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC = ft_convert_char.c\
 		ft_convert_wchar_v2.c\
 		ft_flags.c\
 		ft_init_stuff.c\
+		ft_print_n_free.c\
 		ft_printf.c
 
 OBJ = $(SRC:%.c=%.o)

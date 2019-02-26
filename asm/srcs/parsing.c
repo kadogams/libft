@@ -66,7 +66,7 @@ static int	parse_comment(t_header *header, t_asm *env)
 	env->cur_x += 1;
 	if ((ret = fill_comment(header, env, env->line + i + 1)) == 1)
 		return (check_last_line(env->line, 1, env));
-	while (ret != -1 && get_next_line(env->fd_s, &env->line) > 0)
+	while (ret != -1 && get_next_line_v2(env->fd_s, &env->line, 0) > 0)
 	{
 		env->cur_x = 0;
 		env->cur_y += 1;
@@ -95,7 +95,7 @@ static int	parse_name(t_header *header, t_asm *env)
 	env->cur_x += 1;
 	if ((ret = fill_prog_name(header, env, env->line + i + 1)) == 1)
 		return (check_last_line(env->line, 1, env));
-	while (ret != -1 && get_next_line(env->fd_s, &env->line) > 0)
+	while (ret != -1 && get_next_line_v2(env->fd_s, &env->line, 0) > 0)
 	{
 		env->cur_x = 0;
 		env->cur_y += 1;

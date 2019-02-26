@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skadogam <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 13:42:28 by skadogam          #+#    #+#             */
-/*   Updated: 2018/06/22 13:43:33 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/02/26 11:04:22 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_isupper(int c)
 {
-	return ((c >= 'A' && c <= 'Z') ? 1 : 0);
+	return (c >= 'A' && c <= 'Z');
 }

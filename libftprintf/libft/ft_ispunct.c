@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ispunct.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skadogam <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 16:09:33 by skadogam          #+#    #+#             */
-/*   Updated: 2018/06/22 16:23:47 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/02/26 11:03:48 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int		ft_ispunct(int c)
 {
-	return (ft_isprint(c) && !ft_isalnum(c) && c != ' ' ? 1 : 0);
+	return (ft_isprint(c) && !ft_isalnum(c) && c != ' ');
 }

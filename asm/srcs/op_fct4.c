@@ -20,7 +20,9 @@ int		ft_aff(t_asm *env, int i, char *line)
 	init_arg(&arg, 0, 1);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
-	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 1 || arg.type[0] !=
+	if (!handle_arg(env, &arg, 0, line))
+		return (KO);
+	if (arg.nb_arg != 1 || arg.type[0] !=
 	REG_CODE)
 		return (ft_error(AFF, env));
 	k = -1;

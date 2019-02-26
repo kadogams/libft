@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skadogam <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 10:57:35 by skadogam          #+#    #+#             */
-/*   Updated: 2018/11/07 11:32:11 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/02/22 15:15:09 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <stdlib.h>
 # include <limits.h>
 # include "get_next_line.h"
-
-# define ABS(x) (x < 0 ? -x : x)
 
 typedef struct	s_list
 {
@@ -34,9 +32,10 @@ typedef struct	s_dlist
 	struct s_dlist	*next;
 }				t_dlist;
 
+int				ft_abs(int n);
 int				ft_atoi(const char *str);
 int				ft_atoi_base(const char *str, int base);
-intmax_t		ft_atoj_base(const char *str, int base);
+intmax_t		ft_atoimax_base(const char *str, int base);
 void			ft_bzero(void *s, size_t n);
 void			ft_dlstadd(t_dlist **alst, t_dlist *new);
 void			ft_dlstaddback(t_dlist **alst, t_dlist *new);
@@ -103,6 +102,7 @@ int				ft_strequ(char const *s1, char const *s2);
 void			ft_striter(char *s, void (*f)(char*));
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));
 char			*ft_strjoin(char const *s1, char const *s2);
+char			*ft_strjoin_free_s1(char *s1, char const *s2);
 size_t			ft_strlcat(char *dst, const char *src, size_t size);
 size_t			ft_strlen(const char *s);
 char			*ft_strmap(char const *s, char (*f)(char));

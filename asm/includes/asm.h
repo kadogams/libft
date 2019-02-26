@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:35:46 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 18:06:22 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/26 11:08:25 by aclecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define AFF 18
 # define READ 19
 # define USAGE 20
+# define REG 21
 
 typedef struct		s_asm
 {
@@ -88,25 +89,6 @@ typedef struct		s_op
 	int				size;
 	int				(*ptr_fct)(t_asm *env, int i, char *line);
 }					t_op;
-
-static const t_op	g_op[] = {
-	{"live", 4, ft_live},
-	{"ldi", 3, ft_ldi},
-	{"ld", 2, ft_ld},
-	{"sti", 3, ft_sti},
-	{"st", 2, ft_st},
-	{"add", 3, ft_add},
-	{"sub", 3, ft_sub},
-	{"and", 3, ft_and},
-	{"or", 2, ft_or},
-	{"xor", 3, ft_xor},
-	{"zjmp", 4, ft_zjmp},
-	{"fork", 4, ft_fork},
-	{"lldi", 4, ft_lldi},
-	{"lld", 3, ft_lld},
-	{"lfork", 5, ft_lfork},
-	{"aff", 3, ft_aff}
-};
 
 /*
 ** error.c
@@ -203,5 +185,24 @@ int					ft_lfork(t_asm *env, int i, char *line);
 int					ft_aff(t_asm *env, int i, char *line);
 void				fill_code(t_asm *env, int type, int value, int octet);
 int					get_codage(t_arg arg);
+
+static const t_op	g_op[] = {
+	{"live", 4, ft_live},
+	{"ldi", 3, ft_ldi},
+	{"ld", 2, ft_ld},
+	{"sti", 3, ft_sti},
+	{"st", 2, ft_st},
+	{"add", 3, ft_add},
+	{"sub", 3, ft_sub},
+	{"and", 3, ft_and},
+	{"or", 2, ft_or},
+	{"xor", 3, ft_xor},
+	{"zjmp", 4, ft_zjmp},
+	{"fork", 4, ft_fork},
+	{"lldi", 4, ft_lldi},
+	{"lld", 3, ft_lld},
+	{"lfork", 5, ft_lfork},
+	{"aff", 3, ft_aff}
+};
 
 #endif

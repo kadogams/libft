@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoj_base.c                                     :+:      :+:    :+:   */
+/*   ft_atoimax_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skadogam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -26,7 +26,7 @@ static int	ft_check_base(char c, int base)
 		return (0);
 }
 
-intmax_t	ft_atoj_base(const char *str, int base)
+intmax_t	ft_atoimax_base(const char *str, int base)
 {
 	int				i;
 	int				check;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skadogam <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 15:04:48 by skadogam          #+#    #+#             */
-/*   Updated: 2018/10/05 15:59:02 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/02/22 12:46:39 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,10 @@ size_t			ft_flags(t_buff **flags, const char *s, const char *charset);
 void			ft_init_wut(void
 					(*wut[58])(va_list ap, t_list **buff, t_buff **flags));
 size_t			ft_length(size_t *len, const char *s, const char *charset);
-int				ft_printf(const char *format, ...);
+void			ft_print_n_free(int fd, t_list **buff);
 size_t			ft_size(t_buff **flags, const char *s, const char *charset);
+
+int				ft_printf(const char *format, ...);
+int				ft_dprintf(int fd, const char *format, ...);
 
 #endif

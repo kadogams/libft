@@ -20,7 +20,9 @@ int		ft_sti(t_asm *env, int i, char *line)
 	init_arg(&arg, 2, 1);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
-	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 3 || arg.type[0] !=
+	if (!handle_arg(env, &arg, 0, line))
+		return (KO);
+	if (arg.nb_arg != 3 || arg.type[0] !=
 	REG_CODE || (arg.type[2] != DIR_CODE && arg.type[2] != REG_CODE))
 		return (ft_error(STI, env));
 	k = -1;
@@ -57,7 +59,9 @@ int		ft_lld(t_asm *env, int i, char *line)
 	init_arg(&arg, 4, 1);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
-	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 2 || (arg.type[0] !=
+	if (!handle_arg(env, &arg, 0, line))
+		return (KO);
+	if (arg.nb_arg != 2 || (arg.type[0] !=
 	DIR_CODE && arg.type[0] != IND_CODE) || arg.type[1] != REG_CODE)
 		return (ft_error(LLD, env));
 	k = -1;
@@ -76,7 +80,9 @@ int		ft_lldi(t_asm *env, int i, char *line)
 	init_arg(&arg, 2, 1);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
-	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 3 || (arg.type[1] !=
+	if (!handle_arg(env, &arg, 0, line))
+		return (KO);
+	if (arg.nb_arg != 3 || (arg.type[1] !=
 	REG_CODE && arg.type[1] != DIR_CODE) || arg.type[2] != REG_CODE)
 		return (ft_error(LLDI, env));
 	k = -1;

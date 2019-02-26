@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skadogam <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 17:45:48 by skadogam          #+#    #+#             */
-/*   Updated: 2018/06/26 10:25:33 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/02/14 13:58:27 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	*ft_memalloc(size_t size)
 
 	if (!(mem = (void*)malloc(sizeof(*mem) * size)))
 		return (NULL);
-	ft_memset(mem, 0, size);
+	ft_bzero(mem, size);
 	return (mem);
 }

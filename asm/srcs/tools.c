@@ -96,7 +96,7 @@ int			skip_blank_lines(t_asm *env)
 	int		i;
 
 	ft_strdel(&env->line);
-	while ((ret = get_next_line(env->fd_s, &env->line)) > 0)
+	while ((ret = get_next_line_v2(env->fd_s, &env->line, 0)) > 0)
 	{
 		env->cur_x = 1;
 		env->cur_y += 1;

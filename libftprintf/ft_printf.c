@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skadogam <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 15:08:46 by skadogam          #+#    #+#             */
-/*   Updated: 2018/10/03 15:56:02 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/02/22 12:49:35 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,21 +75,6 @@ static void	ft_convert_none(const char **format, t_list **buff, int *len)
 	*len += (int)new->content_size;
 }
 
-static void	ft_print_n_free(t_list **buff)
-{
-	t_list	*tmp;
-
-	while (*buff)
-	{
-		tmp = (*buff)->next;
-		write(1, (*buff)->content, (*buff)->content_size);
-		ft_memdel(&(*buff)->content);
-		free(*buff);
-		*buff = NULL;
-		*buff = tmp;
-	}
-}
-
 int			ft_printf(const char *format, ...)
 {
 	va_list	ap;
@@ -105,13 +90,41 @@ int			ft_printf(const char *format, ...)
 		{
 			ft_convert(&format, &buff, ap, &len);
 			if (len != -1)
-				ft_print_n_free(&buff);
+				ft_print_n_free(1, &buff);
 		}
 		else
 			ft_convert_none(&format, &buff, &len);
 	}
 	if (len != -1)
-		ft_print_n_free(&buff);
+		ft_print_n_free(1, &buff);
+	va_end(ap);
+	return (len);
+}
+
+int			ft_dprintf(int fd, const char *format, ...)
+{
+	va_list	ap;
+	int		len;
+	t_list	*buff;
+
+	if (fd < 0)
+		return (-1);
+	va_start(ap, format);
+	len = 0;
+	buff = NULL;
+	while (*format && len != -1)
+	{
+		if (*format == '%')
+		{
+			ft_convert(&format, &buff, ap, &len);
+			if (len != -1)
+				ft_print_n_free(fd, &buff);
+		}
+		else
+			ft_convert_none(&format, &buff, &len);
+	}
+	if (len != -1)
+		ft_print_n_free(fd, &buff);
 	va_end(ap);
 	return (len);
 }

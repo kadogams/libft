@@ -6,7 +6,7 @@
 #    By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/13 15:03:00 by skadogam          #+#    #+#              #
-#    Updated: 2019/02/07 11:58:56 by skadogam         ###   ########.fr        #
+#    Updated: 2019/02/26 11:47:22 by aclecler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ HEADER = ./includes
 
 FLAGS = -Wall -Wextra -Werror
 
-SRC = ft_atoi.c ft_atoi_base.c ft_atoj_base.c ft_bzero.c\
+SRC = ft_abs.c ft_atoi.c ft_atoi_base.c ft_atoimax_base.c ft_bzero.c\
 	ft_dlstadd.c ft_dlstaddback.c ft_dlstdel.c ft_dlstdelone.c ft_dlstnew.c\
 	ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isblank.c\
 	ft_isdigit.c ft_islower.c ft_isprint.c ft_ispunct.c ft_isspace.c\
@@ -35,7 +35,8 @@ SRC = ft_atoi.c ft_atoi_base.c ft_atoj_base.c ft_bzero.c\
 	ft_strlen.c ft_strmap.c ft_strmapi.c ft_strncat.c ft_strncmp.c ft_strncpy.c\
 	ft_strnequ.c ft_strnew.c ft_strnstr.c ft_strrchr.c ft_strrev.c\
 	ft_strsplit.c ft_strspn.c ft_strstr.c ft_strsub.c ft_strtrim.c ft_tolower.c\
-	ft_toupper.c ft_utoa_base.c ft_wstrlen.c get_next_line.c get_next_line_v2.c
+	ft_toupper.c ft_utoa_base.c ft_wstrlen.c get_next_line.c get_next_line_v2.c\
+	ft_strjoin_free_s1.c
 
 OBJ =	$(SRC:%.c=%.o)
 

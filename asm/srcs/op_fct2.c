@@ -20,7 +20,9 @@ int		ft_and(t_asm *env, int i, char *line)
 	init_arg(&arg, 4, 1);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
-	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 3 || arg.type[2] !=
+	if (!handle_arg(env, &arg, 0, line))
+		return (KO);
+	 if (arg.nb_arg != 3 || arg.type[2] !=
 	REG_CODE)
 		return (ft_error(AND, env));
 	k = -1;
@@ -39,7 +41,9 @@ int		ft_or(t_asm *env, int i, char *line)
 	init_arg(&arg, 4, 1);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
-	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 3 || arg.type[2] !=
+	if (!handle_arg(env, &arg, 0, line))
+		return (KO);
+	if (arg.nb_arg != 3 || arg.type[2] !=
 	REG_CODE)
 		return (ft_error(OR, env));
 	k = -1;
@@ -58,7 +62,9 @@ int		ft_xor(t_asm *env, int i, char *line)
 	init_arg(&arg, 4, 1);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
-	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 3 || arg.type[2] !=
+	if (!handle_arg(env, &arg, 0, line))
+		return (KO);
+	if (arg.nb_arg != 3 || arg.type[2] !=
 	REG_CODE)
 		return (ft_error(XOR, env));
 	k = -1;
@@ -95,7 +101,8 @@ int		ft_ldi(t_asm *env, int i, char *line)
 	init_arg(&arg, 2, 1);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
-	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 3 || (arg.type[1] !=
+	if (!handle_arg(env, &arg, 0, line))
+	if (arg.nb_arg != 3 || (arg.type[1] !=
 	REG_CODE && arg.type[1] != DIR_CODE) || arg.type[2] != REG_CODE)
 		return (ft_error(LDI, env));
 	k = -1;
