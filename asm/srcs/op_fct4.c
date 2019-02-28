@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 17:32:04 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 17:33:45 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/28 18:26:18 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,17 @@ int		ft_aff(t_asm *env, int i, char *line)
 	init_arg(&arg, 0, 1);
 	line = line + g_op[i].size;
 	env->cur_x += g_op[i].size;
-	if (!handle_arg(env, &arg, 0, line))
-		return (KO);
-	if (arg.nb_arg != 1 || arg.type[0] !=
+	if (!handle_arg(env, &arg, 0, line) || arg.nb_arg != 1 || arg.type[0] !=
 	REG_CODE)
 		return (ft_error(AFF, env));
 	k = -1;
 	env->code[env->index++] = 0x10;
 	env->code[env->index++] = get_codage(arg);
 	while (++k < arg.nb_arg)
-		fill_code(env, arg.type[k], arg.value[k], 0);
+	{
+		if (!fill_code(env, arg.type[k], arg.value[k], 4))
+			return (KO);
+	}
 	return (OK);
 }
 
@@ -43,12 +44,16 @@ int		get_codage(t_arg arg)
 	return (res);
 }
 
-void	fill_code(t_asm *env, int type, int value, int octet)
+int		fill_code(t_asm *env, int type, int value, int octet)
 {
 	int	bits;
 
 	if (type == 1)
+	{
+		if (value < 1 || value > REG_NUMBER)
+			return (ft_error(REG, env));
 		env->code[env->index++] = value;
+	}
 	else if (type == 3)
 	{
 		env->code[env->index++] = (value >> 8) & 0b11111111;
@@ -64,5 +69,6 @@ void	fill_code(t_asm *env, int type, int value, int octet)
 		}
 	}
 	else
-		return ;
+		return (KO);
+	return (OK);
 }

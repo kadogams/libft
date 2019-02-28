@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 09:03:47 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 17:24:12 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/28 18:17:06 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ static int		get_reg(t_asm *env, t_arg *arg, char *line)
 	arg->type[arg->nb_arg] = REG_CODE;
 	if (!atoi_v2(line, &arg->value[arg->nb_arg], env))
 		return (KO);
-	if (arg->value[arg->nb_arg] < 0 || arg->value[arg->nb_arg] > REG_NUMBER)
-		return (ft_error(REG, env));
 	arg->nb_arg++;
 	return (OK);
 }
@@ -60,7 +58,9 @@ static int		get_dir(t_asm *env, t_arg *arg, char *line)
 	arg->nb_arg++;
 	if (line[0] == LABEL_CHAR)
 		return (create_label_arg(env, arg, line + 1));
-	return (atoi_v2(line, &arg->value[arg->nb_arg - 1], env));
+	if (!atoi_v2(line, &arg->value[arg->nb_arg - 1], env))
+		return (KO);
+	return (OK);
 }
 
 static int		get_ind(t_asm *env, t_arg *arg, char *line)

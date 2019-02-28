@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:59:54 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 18:06:56 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/28 18:47:25 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	free_label_arg(t_label_arg *label)
 	free(label);
 }
 
-void		free_all(t_asm *env)
+int			free_all(t_asm *env)
 {
 	free_label(env->label);
 	free_label_arg(env->label_arg);
@@ -48,5 +48,5 @@ void		free_all(t_asm *env)
 	free(env->line);
 	while (get_next_line_v2(env->fd_s, &env->line, 0) > 0)
 		ft_strdel(&env->line);
-	ft_strdel(&env->line);
+	return (0);
 }

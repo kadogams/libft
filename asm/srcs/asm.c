@@ -6,14 +6,11 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 13:21:39 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 17:58:40 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/28 18:57:09 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-
-//TODO registre > 16
-//TODO write return error?
 
 static int	check_valid(char *file)
 {
@@ -25,8 +22,6 @@ static int	check_valid(char *file)
 	return (KO);
 }
 
-//TODO FREE STRJOIN
-
 static char	*parse_file_name(char *file)
 {
 	char	*name;
@@ -34,16 +29,27 @@ static char	*parse_file_name(char *file)
 	int		len;
 
 	len = ft_strlen(file);
-	name = ft_strsub(file, 0, len - 2);
-	name = ft_strjoin_free_s1(name, ".cor");
+	if ((name = ft_strsub(file, 0, len - 2)) == NULL)
+		return (NULL);
+	if ((name = ft_strjoin_free_s1(name, ".cor")) == NULL)
+		return (NULL);
 	return (name);
 }
 
 static int	open_cor_file(char *file, t_asm *env)
 {
 	env->output = parse_file_name(file);
-	env->fd_cor = open(env->output, O_CREAT | O_RDWR, 0644);
-	return (1);
+	if (env->output == NULL)
+	{
+		ft_dprintf(2, "Malloc failed\n");
+		return (KO);
+	}
+	if ((env->fd_cor = open(env->output, O_CREAT | O_RDWR, 0644)) == -1)
+	{
+		ft_dprintf(2, "Failed to create %s\n", env->output);
+		return (KO);
+	}
+	return (OK);
 }
 
 int			main(int ac, char **av)
@@ -57,13 +63,11 @@ int			main(int ac, char **av)
 		if ((env.fd_s = open(av[1], O_RDONLY)) == -1)
 			return (ft_error(READ, &env));
 		if (!start_parsing(&header, &env))
-		{
-			free_all(&env);
-			return (KO);
-		}
+			return (free_all(&env));
 		else
 		{
-			open_cor_file(av[1], &env);
+			if (!open_cor_file(av[1], &env))
+				return (free_all(&env));
 			write_cor_file(&env, &header);
 			ft_printf("Writing output program to %s\n", env.output);
 		}

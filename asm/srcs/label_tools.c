@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:25:03 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 17:33:53 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/28 18:40:02 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,18 @@ int		create_label(t_asm *env, char *line, int i)
 	t_label	*new;
 
 	if (!(new = (t_label*)malloc(sizeof(t_label))))
+	{
+		ft_dprintf(2, "Malloc failed\n");
 		return (-1);
+	}
 	new->name = ft_strsub(line, 0, i);
 	new->index = env->index;
 	new->next = NULL;
 	if (new->name == NULL)
+	{
+		ft_dprintf(2, "Malloc failed\n");
 		return (-1);
+	}
 	add_label(new, env);
 	return (i + 1);
 }

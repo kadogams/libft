@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:35:46 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/26 11:08:25 by aclecler         ###   ########.fr       */
+/*   Updated: 2019/02/28 18:47:08 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,7 @@ void				write_cor_file(t_asm *env, t_header *header);
 ** free_all.c
 */
 
-void				free_all(t_asm *env);
+int					free_all(t_asm *env);
 
 /*
 ** op_fct functions
@@ -183,7 +183,7 @@ int					ft_lld(t_asm *env, int i, char *line);
 int					ft_lldi(t_asm *env, int i, char *line);
 int					ft_lfork(t_asm *env, int i, char *line);
 int					ft_aff(t_asm *env, int i, char *line);
-void				fill_code(t_asm *env, int type, int value, int octet);
+int					fill_code(t_asm *env, int type, int value, int octet);
 int					get_codage(t_arg arg);
 
 static const t_op	g_op[] = {

@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 12:09:18 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 14:14:35 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/02/28 18:34:28 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static void	ft_error3(int option, t_asm *env)
 	else if (option == USAGE)
 		ft_dprintf(2, "Usage: ./asm target_file.s\n");
 	else if (option == REG)
-		ft_dprintf(2, "param reg not correct at line [%d]\n", env->cur_y);
+		ft_dprintf(2, "Param REG must be between 1 and %d (included) "
+		"at line [%d]\n", REG_NUMBER, env->cur_y);
 	else
 		return ;
 }
