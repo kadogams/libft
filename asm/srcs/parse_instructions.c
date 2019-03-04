@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 14:35:09 by dazheng           #+#    #+#             */
-/*   Updated: 2019/03/04 14:23:26 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/03/04 14:48:53 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@ static int	search_for_instr(t_asm *env, int i)
 		while (env->line[i] == g_op[j].opcode[k])
 		{
 			if (g_op[j].size - 1 == k)
-			{
 				return ((*g_op[j].ptr_fct)(env, j, env->line + start));
-			}
 			i++;
 			k++;
 		}
