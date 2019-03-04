@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 16:50:48 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 17:43:34 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/03/04 17:55:45 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,20 @@ int			start_parsing(t_header *header, t_asm *env)
 {
 	if (!parse_name(header, env))
 		return (KO);
+	if (header->prog_name[0] == '\0')
+	{
+		ft_printf("No name\n");
+		return (KO);
+	}
 	if (!parse_comment(header, env))
 		return (KO);
 	if (!parse_instructions(env))
 		return (KO);
+	if (env->code[0] == '\0')
+	{
+		ft_printf("No instructions in file\n");
+		return (KO);
+	}
 	if (!manage_labels(env))
 		return (KO);
 	return (OK);
