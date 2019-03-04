@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 13:21:39 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/28 19:11:53 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/03/04 17:22:59 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ static int	open_cor_file(char *file, t_asm *env)
 		ft_dprintf(2, "Malloc failed\n");
 		return (KO);
 	}
-	if ((env->fd_cor = open(env->output, O_CREAT | O_RDWR, 0644)) == -1)
+	if ((env->fd_cor = open(env->output, O_CREAT | O_RDWR | O_TRUNC, 0644))
+			== -1)
 	{
 		ft_dprintf(2, "Failed to create %s\n", env->output);
 		return (KO);
