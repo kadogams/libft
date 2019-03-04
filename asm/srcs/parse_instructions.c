@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 14:35:09 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 17:21:42 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/03/04 14:23:26 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	search_for_instr(t_asm *env, int i)
 		k = 0;
 		j++;
 	}
-	return (ft_error(INSTR, env));
+	return (ft_error(1, env));
 }
 
 static int	search_label(t_asm *env, char *line)

@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 11:58:23 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/28 18:40:49 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/03/04 14:42:19 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,12 @@ int			create_label_arg(t_asm *env, t_arg *arg, char *line)
 		ft_dprintf(2, "Malloc failed\n");
 		return (KO);
 	}
-	new->label_name = get_label_name(env, line);
+	if ((new->label_name = get_label_name(env, line)) == NULL)
+		return (KO);
 	new->index_lab = env->index;
 	new->pos = get_pos(env, arg) + env->index;
 	new->label_size = get_label_size(arg);
 	new->next = NULL;
-	if (new->label_name == NULL)
-	{
-		ft_dprintf(2, "Malloc failed\n");
-		return (KO);
-	}
 	add_label_arg(new, env);
 	return (OK);
 }

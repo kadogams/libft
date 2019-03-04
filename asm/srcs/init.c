@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:03:49 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/21 10:15:46 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/03/04 14:06:44 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int		init_env(t_asm *env)
 	env->index = 0;
 	env->label = NULL;
 	env->label_arg = NULL;
+	ft_bzero(env->code, CHAMP_MAX_SIZE);
 	return (1);
 }
 

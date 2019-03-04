@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 12:09:18 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/28 18:34:28 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/03/04 14:22:26 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ int			ft_error(int option, t_asm *env)
 	else if (option == LIVE)
 		ft_dprintf(2, "'live' malformated at line [%d]\nlive: T_DIR\n",
 				env->cur_y);
-	else if (option == INSTR)
-		ft_dprintf(2, "No label or no instruction\n");
+	//else if (option == INSTR)
+	//	ft_dprintf(2, "No label or no instruction\n");
 	else if (option == LD)
 		ft_dprintf(2, "'ld' malformated at line [%d]\nld: T_DIR | T_IND, "
 				"T_REG\n", env->cur_y);

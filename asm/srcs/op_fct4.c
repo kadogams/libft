@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 17:32:04 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/28 18:26:18 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/03/04 12:47:10 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		ft_aff(t_asm *env, int i, char *line)
 	env->code[env->index++] = get_codage(arg);
 	while (++k < arg.nb_arg)
 	{
-		if (!fill_code(env, arg.type[k], arg.value[k], 4))
+		if (!fill_code(env, arg.type[k], arg.value[k], 0))
 			return (KO);
 	}
 	return (OK);
