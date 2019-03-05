@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:35:46 by dazheng           #+#    #+#             */
-/*   Updated: 2019/03/04 14:11:10 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/03/05 11:36:29 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@
 # define READ 19
 # define USAGE 20
 # define REG 21
+# define NO_NAME 22
+# define NO_COMMENT 23
 
 typedef struct		s_asm
 {

@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 12:09:18 by dazheng           #+#    #+#             */
-/*   Updated: 2019/03/04 14:49:25 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/03/05 11:36:24 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static void	ft_error3(int option, t_asm *env)
 	else if (option == REG)
 		ft_dprintf(2, "Param REG must be between 1 and %d (included) "
 		"at line [%d]\n", REG_NUMBER, env->cur_y);
+	else if (option == NO_NAME)
+		ft_dprintf(2, "Champion has no name\n");
 	else
 		return ;
 }
@@ -59,6 +61,8 @@ static void	ft_error2(int option, t_asm *env)
 	else if (option == LLDI)
 		ft_dprintf(2, "'lldi' malformated at line [%d]\nlldi: T_REG| T_DIR | "
 				"T_IND, T_REG| T_DIR, T_REG\n", env->cur_y);
+	else if (option == NO_COMMENT)
+		ft_dprintf(2, "Champion has no comment\n");
 	else
 		ft_error3(option, env);
 }

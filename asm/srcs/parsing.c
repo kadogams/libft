@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 16:50:48 by dazheng           #+#    #+#             */
-/*   Updated: 2019/03/04 17:55:45 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/03/05 11:32:04 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	parse_comment(t_header *header, t_asm *env)
 	ft_bzero(header->comment, COMMENT_LENGTH);
 	if (!skip_blank_lines(env) || (i = skip_whitespace(env->line, env,
 	UPDATE_X)) == -1 || ft_strncmp(env->line + i, ".comment", 8))
-		return (ft_error(1, env));
+		return (ft_error(NO_COMMENT, env));
 	env->cur_x += 8;
 	if ((ret = skip_whitespace(env->line + i + 8, env, UPDATE_X)) == -1)
 		return (KO);
@@ -85,7 +85,7 @@ static int	parse_name(t_header *header, t_asm *env)
 	ft_bzero(header->prog_name, PROG_NAME_LENGTH);
 	if (!skip_blank_lines(env) || (i = skip_whitespace(env->line, env,
 	UPDATE_X)) == -1 || ft_strncmp(env->line + i, ".name", 5))
-		return (ft_error(1, env));
+		return (ft_error(NO_NAME, env));
 	env->cur_x += 5;
 	if ((ret = skip_whitespace(env->line + i + 5, env, UPDATE_X)) == -1)
 		return (KO);
@@ -110,11 +110,6 @@ int			start_parsing(t_header *header, t_asm *env)
 {
 	if (!parse_name(header, env))
 		return (KO);
-	if (header->prog_name[0] == '\0')
-	{
-		ft_printf("No name\n");
-		return (KO);
-	}
 	if (!parse_comment(header, env))
 		return (KO);
 	if (!parse_instructions(env))
