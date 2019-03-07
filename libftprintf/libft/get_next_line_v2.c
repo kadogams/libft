@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_v2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skadogam <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 11:45:03 by skadogam          #+#    #+#             */
-/*   Updated: 2019/01/25 11:45:04 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/02/26 12:18:13 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ static int		eol(t_line *leftover, t_dlist *buff)
 	return (0);
 }
 
-static void		save_line(char **line, t_line *leftover)
+static int		save_line(char **line, t_line *leftover)
 {
 	char	*s;
 	char	*tmp;
 
 	if (!(*line = ft_strnew(leftover->eol + 1)))
-		return ;
+		return (0);
 	s = (char*)leftover->buff->content + leftover->save;
 	tmp = *line;
 	while (leftover->eol)
@@ -63,6 +63,7 @@ static void		save_line(char **line, t_line *leftover)
 	}
 	if (*s == '\n')
 		leftover->save += 1;
+	return (1);
 }
 
 static int		read_n_save(const int fd, char **line, t_line *leftover,
@@ -85,7 +86,8 @@ static int		read_n_save(const int fd, char **line, t_line *leftover,
 	}
 	if (ret == -1 || (ret == 0 && !leftover->buff))
 		return (ret);
-	save_line(line, leftover);
+	if (!save_line(line, leftover))
+		return (-1);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 #    By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/13 15:03:00 by skadogam          #+#    #+#              #
-#    Updated: 2019/02/26 11:47:22 by aclecler         ###   ########.fr        #
+#    Updated: 2019/03/07 16:11:27 by skadogam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC = ft_abs.c ft_atoi.c ft_atoi_base.c ft_atoimax_base.c ft_bzero.c\
 	ft_lstdel2.c ft_lstdelone.c ft_lstdelone2.c ft_lstiter.c ft_lstlen.c\
 	ft_lstmap.c ft_lstnew.c\
 	ft_ltoa_base.c ft_lutoa_base.c ft_memalloc.c ft_memccpy.c\
-	ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memcpy_back.c\
+	ft_memchr.c ft_memcmp_zero.c ft_memcmp.c ft_memcpy.c ft_memcpy_back.c\
 	ft_memdel.c ft_memmove.c ft_memset.c ft_memset_back.c\
 	ft_putchar.c ft_putchar_fd.c ft_putendl.c ft_putendl_fd.c ft_putnbr.c\
 	ft_putnbr_fd.c ft_putstr.c ft_putstr_fd.c ft_sqrt.c ft_strcat.c ft_strchr.c\
