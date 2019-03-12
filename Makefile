@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dazheng <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: dazheng <dazheng@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/12 13:38:06 by dazheng           #+#    #+#              #
-#    Updated: 2019/03/12 13:48:31 by dazheng          ###   ########.fr        #
+#    Updated: 2019/03/12 15:34:17 by adefonta         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = asm
+NAME = parse
 NAME2 = vm
 
 all:

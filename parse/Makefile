@@ -6,7 +6,7 @@
 #    By: aclecler <aclecler@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/18 00:39:00 by aclecler          #+#    #+#              #
-#    Updated: 2019/02/22 17:59:46 by dazheng          ###   ########.fr        #
+#    Updated: 2019/03/12 15:33:15 by adefonta         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ $(NAME): $(OBJS_LEMIN)
 	@mkdir -p players
 	@make -C $(LIBFT)
 	@$(CC) $(FLAGS) $^ -o $@ -I $(LIBFT)/libft/includes -I $(INC) $(LIBFT)/libftprintf.a
+	@cp $(NAME) ../
 	@echo "\033[32mOutfile ASM	[ ✔ ]"
 
 $(OUT_DIR)/%.o: $(SRCS_DIR)/%.c
@@ -70,6 +71,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
+	@rm -f ../$(NAME)
 	@make fclean -C $(LIBFT)
 	@echo "\033[32mFclean  [ ✔ ]"
 clean_player:

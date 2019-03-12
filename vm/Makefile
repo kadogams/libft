@@ -6,7 +6,7 @@
 #    By: aclecler <aclecler@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/18 00:39:00 by aclecler          #+#    #+#              #
-#    Updated: 2019/03/07 09:51:24 by skadogam         ###   ########.fr        #
+#    Updated: 2019/03/12 15:31:41 by adefonta         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,12 +52,10 @@ OBJS_VISU = $(addprefix $(OUT_DIR)/,$(IN_VISU:.c=.o))
 
 all: $(NAME)
 
-#$(NAME): lib $(OBJS)
-#	@$(CC) $(OBJS) $(INC_LIB) $(FLAGS) -o $(NAME)
-#	@echo "\033[32mCorewar compiled	[ ✔ ]"
 
 $(NAME): lib $(OBJS) $(OBJS_VISU)
 	@$(CC) $(OBJS) $(OBJS_VISU) $(INC_LIB) $(FLAGS) -framework OpenGL -framework AppKit -o $(NAME)
+	@cp $(NAME) ../
 	@echo "\033[32mCorewar compiled	[ ✔ ]"
 
 $(OUT_DIR)/%.o: $(SRCS_DIR)/%.c
@@ -74,7 +72,7 @@ $(OUT_DIR)/%.o: $(OP_DIR)/%.c
 
 lib:
 	@make -C $(LIBFT)
-	#@make -C visu/minilibx/
+	@make -C visu/minilibx/
 
 norme:
 	norminette ./$(LIBFT)/ ./$(INC)/ ./$(SRCS_DIR)/
@@ -84,13 +82,14 @@ clean:
 	@rm -f $(OBJS)
 	@rm -rf $(OUT_DIR)
 	@make clean -C $(LIBFT)
-	#@make -C visu/minilibx/ clean
+	@make -C visu/minilibx/ clean
 	@echo "\033[32mVM clean  [ ✔ ]"
 
 fclean: clean
 	@rm -f $(NAME)
+	@rm -f ../$(NAME)
 	@make fclean -C $(LIBFT)
-	#@make -C visu/minilibx/ fclean
+	@make -C visu/minilibx/ fclean
 	@echo "\033[32mVM fclean  [ ✔ ]"
 
 re: fclean all
