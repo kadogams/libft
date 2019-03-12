@@ -6,7 +6,7 @@
 /*   By: adefonta <adefonta@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 22:14:10 by adefonta          #+#    #+#             */
-/*   Updated: 2019/03/12 17:31:29 by adefonta         ###   ########.fr       */
+/*   Updated: 2019/03/12 19:26:39 by adefonta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,16 @@ void		free_image(t_param *param, t_img *img)
 	}
 }
 
-void	del_param(t_param *param)
+void		del_param(t_param *param)
 {
 	t_mlx	*mlx;
 
 	if (param)
 	{
+		param->run = 0;
+		and_the_winner_is(param->vm, param->vm->last_living_champi);
 		free_graph(param);
 		free_vm(param);
-		param->run = 0;
 		if ((mlx = param->mlx))
 		{
 			free_image(param, param->img);

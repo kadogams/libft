@@ -6,7 +6,7 @@
 #    By: aclecler <aclecler@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/18 00:39:00 by aclecler          #+#    #+#              #
-#    Updated: 2019/03/12 17:26:12 by adefonta         ###   ########.fr        #
+#    Updated: 2019/03/12 19:18:18 by adefonta         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = corewar
 
 CC = gcc
 
-FLAGS = -O3 -Wall -Wextra -Werror -fsanitize=address
+FLAGS = -O3 -Wall -Wextra -Werror #-fsanitize=address
 
 IN =	vm.c champi.c error.c pc.c free.c init.c arena.c operation.c\
 		args.c tools.c dump.c put.c put2.c flags.c verbosity.c introduction.c \
