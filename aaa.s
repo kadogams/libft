@@ -8,9 +8,10 @@ st	r1,6
 
 a:		live	%0
 		st	r1,16
-		ld	%0,r15
+		ld	%0,r2
 		fork	%:a
 
 b:		live	%0
 		fork	%:b
+		ld	%0,r2
 		zjmp	%:a
