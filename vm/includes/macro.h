@@ -6,7 +6,7 @@
 /*   By: adefonta <adefonta@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 14:25:04 by adefonta          #+#    #+#             */
-/*   Updated: 2019/03/12 10:08:58 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/03/12 10:31:13 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define DIR_CODE				2
 # define IND_CODE				3
 
-# define MAX_PLAYERS			4
+# define MAX_PLAYERS			6
 # define MEM_SIZE				(4*1024)
 # define IDX_MOD				(MEM_SIZE / 8)
 # define CHAMP_MAX_SIZE			(MEM_SIZE / 6)
