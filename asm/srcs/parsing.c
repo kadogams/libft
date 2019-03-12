@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 16:50:48 by dazheng           #+#    #+#             */
-/*   Updated: 2019/03/05 11:32:04 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/03/12 14:55:01 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	parse_comment(t_header *header, t_asm *env)
 	int		i;
 
 	ft_bzero(header->comment, COMMENT_LENGTH);
-	if (!skip_blank_lines(env) || (i = skip_whitespace(env->line, env,
+	if (skip_blank_lines(env) != 1 || (i = skip_whitespace(env->line, env,
 	UPDATE_X)) == -1 || ft_strncmp(env->line + i, ".comment", 8))
 		return (ft_error(NO_COMMENT, env));
 	env->cur_x += 8;
@@ -83,7 +83,7 @@ static int	parse_name(t_header *header, t_asm *env)
 	int		i;
 
 	ft_bzero(header->prog_name, PROG_NAME_LENGTH);
-	if (!skip_blank_lines(env) || (i = skip_whitespace(env->line, env,
+	if (skip_blank_lines(env) != 1 || (i = skip_whitespace(env->line, env,
 	UPDATE_X)) == -1 || ft_strncmp(env->line + i, ".name", 5))
 		return (ft_error(NO_NAME, env));
 	env->cur_x += 5;

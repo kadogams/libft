@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:59:54 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/28 18:47:25 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/03/12 14:45:27 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,7 @@ int			free_all(t_asm *env)
 	free(env->line);
 	while (get_next_line_v2(env->fd_s, &env->line, 0) > 0)
 		ft_strdel(&env->line);
+	close(env->fd_s);
+	close(env->fd_cor);
 	return (0);
 }

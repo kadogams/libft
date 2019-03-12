@@ -6,7 +6,7 @@
 /*   By: dazheng <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 16:46:24 by dazheng           #+#    #+#             */
-/*   Updated: 2019/02/22 17:54:03 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/03/12 14:45:48 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,7 @@ int			skip_blank_lines(t_asm *env)
 		env->cur_y += 1;
 		i = skip_whitespace(env->line, env, NO_UPDATE_X);
 		if (env->line[i] == '\0' || env->line[i] == '#')
-		{
 			ft_strdel(&env->line);
-			continue ;
-		}
 		else
 			return (ft_strchri(env));
 	}
