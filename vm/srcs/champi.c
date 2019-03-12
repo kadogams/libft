@@ -6,7 +6,7 @@
 /*   By: adefonta <adefonta@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 16:58:41 by adefonta          #+#    #+#             */
-/*   Updated: 2019/03/07 14:49:28 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/03/09 08:54:30 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ t_champi	*champi_init(t_vm *vm, int index, long number)
 {
 	t_champi	*champi;
 
+	if (++vm->nb_champi > MAX_PLAYERS)
+		return (error_null(ERROR_CHAMPI_TOOMANY));
 	if (!(champi = (t_champi *)ft_memalloc(sizeof(t_champi))))
 		return (error_null(ERROR_CHAMPI_NULL));
 	champi->index = index;
@@ -53,18 +55,22 @@ t_champi	*champi_init(t_vm *vm, int index, long number)
 	champi->nb_live = 0;
 	champi_set_number(vm, champi, number);
 	vm->champi[index] = champi;
-	if (++vm->nb_champi > MAX_PLAYERS)
-		return (error_null(ERROR_CHAMPI_TOOMANY));
 	vm->nb_process++;
 	vm->last_living_champi = champi;
 	return (champi);
 }
 
-void		champi_reset_live(t_vm *vm)
+int			champi_reset_live(t_vm *vm)
 {
-	int			i;
+	int	i;
+	int	state;
 
+	state = KO;
 	i = -1;
 	while (++i < vm->nb_champi)
+	{
+		(vm->champi[i]->nb_live > 0) ? state = OK : 0;
 		vm->champi[i]->nb_live = 0;
+	}
+	return (state);
 }

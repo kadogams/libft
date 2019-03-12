@@ -6,7 +6,7 @@
 /*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 11:11:27 by skadogam          #+#    #+#             */
-/*   Updated: 2019/03/07 14:46:52 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/03/07 21:00:24 by adefonta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int			arg_read(unsigned char *arena, unsigned int index, int len);
 int			args_manage(t_pc *pc, t_op op, unsigned char *arena, int index);
 int			arg_define(t_vm *vm, t_pc *pc, int arg, int type);
 
-void		champi_reset_live(t_vm *vm);
+int			champi_reset_live(t_vm *vm);
 t_champi	*champi_init(t_vm *vm, int index, long number);
 
 int			dump(t_vm *vm);

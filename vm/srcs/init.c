@@ -6,7 +6,7 @@
 /*   By: adefonta <adefonta@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 14:14:34 by adefonta          #+#    #+#             */
-/*   Updated: 2019/03/06 14:14:20 by adefonta         ###   ########.fr       */
+/*   Updated: 2019/03/09 09:09:17 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	init_vm(t_vm *vm)
 {
 	ft_bzero(vm, sizeof(t_vm));
+	vm->opt_v = 1;
 	vm->opt_dump = -1;
 }
 

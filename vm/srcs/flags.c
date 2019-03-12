@@ -6,7 +6,7 @@
 /*   By: kadogams <kadogams@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 03:49:19 by kadogams          #+#    #+#             */
-/*   Updated: 2019/03/06 13:24:54 by adefonta         ###   ########.fr       */
+/*   Updated: 2019/03/09 08:27:27 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,13 @@ static int	get_number(int ac, char **av, int *i, long *n)
 {
 	if (*i + 3 >= ac)
 		return (KO);
-	*n = (long)ft_atoimax_base(av[*i + 2], 10);
+	*n = (long)ft_atoi(av[*i + 2]);
 	*i += 2;
 	return (OK);
 }
 
 static int	get_dump(int ac, char **av, int *i, int *n)
 {
-	long	tmp;
-
-	tmp = 0;
 	if (*i + 2 >= ac)
 		return (KO);
 	*n = ft_atoi(av[*i + 2]);

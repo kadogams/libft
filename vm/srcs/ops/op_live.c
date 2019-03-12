@@ -6,7 +6,7 @@
 /*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 11:36:26 by skadogam          #+#    #+#             */
-/*   Updated: 2019/03/07 14:37:28 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/03/07 21:58:40 by adefonta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			op_live(t_vm *vm, t_pc *pc, int arg[3], char arg_type[3])
 		(vm->opt_v & 4) ? verbosity_4(*pc, g_op[1], pc->arg, pc->arg_type) : 0;
 		if (vm->opt_v & 16)
 			verbosity_16(*pc, vm->arena, pc->index,
-				pc->index + pc->arg_len + 1);
+						pc->index + pc->arg_len + 1);
 		i = -1;
 		while (++i < vm->nb_champi)
 		{

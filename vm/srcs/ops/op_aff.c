@@ -6,7 +6,7 @@
 /*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 12:00:09 by skadogam          #+#    #+#             */
-/*   Updated: 2019/03/06 17:40:43 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/03/09 09:08:03 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int		op_aff(t_vm *vm, t_pc *pc, int arg[3], char arg_type[3])
 		if (vm->opt_v & 16)
 			verbosity_16(*pc, vm->arena, pc->index,
 				pc->index + pc->arg_len + 1);
-		ft_printf("AFF: %c\n", pc->reg[arg[0]] % 256);
+		if (vm->opt_aff & 1)
+			ft_printf("AFF: %c\n", pc->reg[arg[0]] % 256);
 	}
 	pc->index += pc->arg_len + 1;
 	return (OK);

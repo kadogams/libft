@@ -6,7 +6,7 @@
 /*   By: adefonta <adefonta@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 19:52:45 by adefonta          #+#    #+#             */
-/*   Updated: 2019/03/07 14:48:00 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/03/07 21:58:41 by adefonta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int			arena_next_cycle(t_vm *vm)
 		return (dump(vm));
 	if (!read_pc(vm))
 		return (KO);
-	vm->cycles = (vm->tot_cycles == CYCLE_TO_DIE) ? 0 : vm->cycles;
 	if (vm->cycles >= vm->cycles_to_die)
 	{
 		champi_reset_live(vm);
