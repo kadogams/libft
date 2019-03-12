@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skadogam <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 15:49:47 by skadogam          #+#    #+#             */
-/*   Updated: 2018/07/04 15:47:20 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/03/09 08:25:03 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,13 @@ static size_t	ft_countwords(const char *s, char c)
 	return (count);
 }
 
-static void		delete_tab(char **tab, size_t n)
+static void		*delete_tab(char **tab, size_t n)
 {
 	while (n--)
 		ft_strdel(&tab[n]);
+	free(tab);
+	tab = NULL;
+	return (NULL);
 }
 
 char			**ft_strsplit(const char *s, char c)
@@ -58,7 +61,7 @@ char			**ft_strsplit(const char *s, char c)
 			while (s[len] && (s[len] != c))
 				len++;
 			if (!(dst[i++] = ft_strsub(s, 0, len)))
-				delete_tab(dst, i - 1);
+				return (delete_tab(dst, i - 1));
 			s += len;
 		}
 	}
