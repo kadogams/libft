@@ -6,7 +6,7 @@
 /*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 11:09:56 by skadogam          #+#    #+#             */
-/*   Updated: 2019/03/07 15:59:15 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/03/12 16:35:57 by adefonta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ int			main(int ac, char **av)
 		free_champi_list(vm.champi, vm.nb_champi);
 		free_pc_list(vm.pc);
 	}
+	sleep(10);
 	return (0);
 }

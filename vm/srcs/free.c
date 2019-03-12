@@ -6,12 +6,13 @@
 /*   By: adefonta <adefonta@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 19:00:47 by adefonta          #+#    #+#             */
-/*   Updated: 2019/03/08 08:28:26 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/03/12 17:31:23 by adefonta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
 #include "macro.h"
+#include "libftprintf.h"
 #include <stdlib.h>
 
 void	free_pc_list(t_pc *pc)

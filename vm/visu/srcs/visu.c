@@ -6,7 +6,7 @@
 /*   By: adefonta <adefonta@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:52:31 by adefonta          #+#    #+#             */
-/*   Updated: 2019/03/07 10:43:50 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/03/12 17:29:34 by adefonta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ void			visu_print(t_param *p)
 		if (!(p->mode_graph))
 			display_pcbg(p->vm, img);
 		mlx_put_image_to_window(p->mlx->ptr, p->mlx->win, img->ptr, 0, 0);
-		mlx_destroy_image(p->mlx->ptr, img->ptr);
-		free(img);
+		free_image(p, img);
 		if (!(p->mode_graph))
 			display_arena(p);
 		display_graphtitle(p->mlx, p->graph, p->mode_graph);
@@ -85,8 +84,7 @@ void			visu_ending(t_param *p)
 	{
 		display_cadre(img);
 		mlx_put_image_to_window(p->mlx->ptr, p->mlx->win, img->ptr, 0, 0);
-		mlx_destroy_image(p->mlx->ptr, img->ptr);
-		ft_memdel((void **)&img);
+		free_image(p, img);
 		display_end(p->mlx, p->vm);
 		display_info(*p, *p->mlx, *p->vm);
 	}

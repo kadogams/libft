@@ -6,7 +6,7 @@
 /*   By: adefonta <adefonta@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 23:35:41 by adefonta          #+#    #+#             */
-/*   Updated: 2019/02/15 14:15:57 by adefonta         ###   ########.fr       */
+/*   Updated: 2019/03/12 17:30:42 by adefonta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,10 @@ t_img	*img_create(t_mlx *mlx, int dim[2])
 			&image->opp, &image->sizeline, &image->endian);
 	image->opp /= 8;
 	image->size = image->dim[0] * image->dim[1];
+	if (!image->ptr || !image->data)
+	{
+		free(image);
+		return (NULL);
+	}
 	return (image);
 }

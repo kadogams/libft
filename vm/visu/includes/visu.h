@@ -6,7 +6,7 @@
 /*   By: adefonta <adefonta@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:54:20 by adefonta          #+#    #+#             */
-/*   Updated: 2019/03/06 17:26:01 by adefonta         ###   ########.fr       */
+/*   Updated: 2019/03/12 17:22:25 by adefonta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void		visu_print(t_param *p);
 void		visu_ending(t_param *p);
 
 void		del_param(t_param *param);
+void		free_image(t_param *param, t_img *img);
 
 int			img_color_bg(t_img *img, int start, int end, int color);
 t_img		*img_create(t_mlx *mlx, int dim[2]);
