@@ -6,7 +6,7 @@
 /*   By: adefonta <adefonta@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 16:34:27 by adefonta          #+#    #+#             */
-/*   Updated: 2019/03/07 22:05:14 by adefonta         ###   ########.fr       */
+/*   Updated: 2019/03/12 16:12:22 by adefonta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	op_define_type(t_pc *pc, unsigned char byte)
 	else
 	{
 		pc->op_code = byte;
-		pc->count_down = g_op[byte].cycles - 1;
+		pc->count_down = g_op[byte].cycles - 2;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: adefonta <adefonta@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 14:38:30 by adefonta          #+#    #+#             */
-/*   Updated: 2019/03/07 15:09:24 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/03/12 16:15:58 by adefonta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,19 @@ typedef struct	s_champi
 
 typedef struct	s_pc
 {
-	int			nb;
-	int			index;
-	int			pre_index;
-	int			carry;
-	int			reg[NB_REGISTRE];
-	int			op_code;
-	int			live;
-	int			arg_len;
-	int			arg[3];
-	char		arg_type[3];
-	int			count_down;
-	t_champi	*champi;
-	struct s_pc	*next;
+	int				nb;
+	unsigned int	index;
+	unsigned int	pre_index;
+	int				carry;
+	int				reg[NB_REGISTRE];
+	int				op_code;
+	int				live;
+	int				arg_len;
+	int				arg[3];
+	char			arg_type[3];
+	int				count_down;
+	t_champi		*champi;
+	struct s_pc		*next;
 }				t_pc;
 
 typedef struct	s_vm
