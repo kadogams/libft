@@ -6,7 +6,7 @@
 /*   By: adefonta <adefonta@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 18:07:01 by adefonta          #+#    #+#             */
-/*   Updated: 2019/03/06 14:48:25 by adefonta         ###   ########.fr       */
+/*   Updated: 2019/03/12 14:47:00 by adefonta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	info_bottom(t_mlx mlx, t_vm vm, int coord[2])
 	display_string(mlx, txt, coord, c);
 	txt = ft_strjoin_free(T_CYCLE_DELTA, ft_itoa(CYCLE_DELTA), 1);
 	display_string(mlx, txt, coord, c);
-	txt = ft_strjoin_free(T_NB_LIVE, ft_itoa(vm.checkups), 1);
+	txt = ft_strjoin_free(T_NB_LIVE, ft_itoa(vm.live_calls), 1);
 	display_string(mlx, txt, coord, c);
 	txt = ft_strjoin_free(T_MAX_LIVE, ft_itoa(NBR_LIVE), 1);
 	display_string(mlx, txt, coord, c);

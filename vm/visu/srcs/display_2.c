@@ -6,7 +6,7 @@
 /*   By: adefonta <adefonta@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 14:14:34 by adefonta          #+#    #+#             */
-/*   Updated: 2019/03/06 16:10:19 by adefonta         ###   ########.fr       */
+/*   Updated: 2019/03/12 14:51:55 by adefonta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ static void	display_champi(t_mlx *mlx, t_vm vm, int coord[2])
 		c = vm.champi[i];
 		coord[1] += S_H;
 		txt = ft_strjoin(T_PLAYER_NAME, c->name);
+		if (vm.last_living_champi != NULL && vm.last_living_champi->index == i)
+			txt = ft_strjoin_free(txt, " is the WINNER!", 0);
 		display_string(*mlx, txt, coord, c->color);
 		txt = ft_strjoin_free(T_PLAYER_INDEX, ft_itoa(c->index), 1);
 		display_string(*mlx, txt, coord, c->color);
