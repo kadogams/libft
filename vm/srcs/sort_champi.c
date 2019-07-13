@@ -6,7 +6,7 @@
 /*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 11:25:46 by skadogam          #+#    #+#             */
-/*   Updated: 2019/07/13 14:03:06 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/07/13 14:19:06 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void		sort_champi_by_number(t_vm *vm, t_list **champi_lst)
 		tmp = *champi_lst;
 		while (++j < vm->nb_champi && (tmp = tmp->next))
 		{
-			if (vm->champi[i]->number > vm->champi[j]->number)
+			if (vm->champi[i]->number < vm->champi[j]->number)
 			{
 				swap_champi(&vm->champi[i], &vm->champi[j]);
 				swap_list_contents(champi_lst, &tmp);
