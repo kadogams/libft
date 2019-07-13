@@ -6,7 +6,7 @@
 /*   By: adefonta <adefonta@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 16:58:41 by adefonta          #+#    #+#             */
-/*   Updated: 2019/03/09 08:54:30 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/07/13 13:52:07 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 static void	champi_set_number(t_vm *vm, t_champi *current, long number)
 {
 	int	i;
-	int	min;
+	int	new_number;
 
 	if (number != NB_OK)
 	{
@@ -31,14 +31,14 @@ static void	champi_set_number(t_vm *vm, t_champi *current, long number)
 			return ;
 		}
 	}
+	new_number = 0;
 	i = -1;
-	min = 0;
 	while (vm->champi[++i])
 	{
-		if (vm->champi[i]->number < min)
-			min = vm->champi[i]->number;
+		if (vm->champi[i]->number == new_number)
+			new_number++;
 	}
-	current->number = min - 1;
+	current->number = new_number;
 }
 
 t_champi	*champi_init(t_vm *vm, int index, long number)
@@ -53,10 +53,10 @@ t_champi	*champi_init(t_vm *vm, int index, long number)
 	champi->color = g_colors[index];
 	champi->nb_process = 1;
 	champi->nb_live = 0;
+	champi->number = -1;
 	champi_set_number(vm, champi, number);
 	vm->champi[index] = champi;
 	vm->nb_process++;
-	vm->last_living_champi = champi;
 	return (champi);
 }
 

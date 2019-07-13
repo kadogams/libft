@@ -6,7 +6,7 @@
 /*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 11:11:27 by skadogam          #+#    #+#             */
-/*   Updated: 2019/03/13 18:14:34 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/07/13 12:03:14 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ void		put_green(int n);
 void		put_yellow(int n);
 void		put_cyan(int n);
 void		put_mauve(int n);
+
+void		sort_champi_by_number(t_vm *vm, t_list **champi_lst);
 
 void		tools_memcpy_int(t_vm *vm, unsigned int index, int n);
 

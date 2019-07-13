@@ -6,7 +6,7 @@
 /*   By: adefonta <adefonta@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 17:11:21 by adefonta          #+#    #+#             */
-/*   Updated: 2019/03/07 15:00:09 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/07/13 13:51:31 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int			pc_init_all(t_vm *vm, t_list **champi_lst)
 	i = -1;
 	while (++i < vm->nb_champi && champi_lst)
 	{
+		vm->last_living_champi = vm->champi[i];
 		tmp = (*champi_lst)->next;
 		pc_index = pc_index_base(i, vm->nb_champi);
 		if (!init_pc(vm, vm->champi[i], pc_index))

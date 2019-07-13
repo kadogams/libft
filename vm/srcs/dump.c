@@ -6,13 +6,13 @@
 /*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:58:48 by skadogam          #+#    #+#             */
-/*   Updated: 2019/03/07 10:52:20 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/07/13 11:44:23 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static void	init_put(void (*put[7])(int n))
+static void	init_put_colors(void (*put[7])(int n))
 {
 	put[0] = put_neutral;
 	put[1] = put_red;
@@ -67,12 +67,12 @@ int			dump(t_vm *vm)
 	int		i;
 	int		skip;
 	int		blank[16];
-	void	(*put[7])(int n);
+	void	(*put_colors[7])(int n);
 
 	i = -1;
 	skip = 0;
 	ft_bzero(blank, 16 * sizeof(int));
-	init_put(put);
+	init_put_colors(put_colors);
 	ft_printf("0x0000 : ");
 	while (++i < MEM_SIZE)
 	{
@@ -83,7 +83,7 @@ int			dump(t_vm *vm)
 		}
 		else if (i && !(i % 8))
 			ft_printf(" ");
-		put[vm->arena_champi[i]](vm->arena[i]);
+		put_colors[vm->arena_champi[i]](vm->arena[i]);
 	}
 	print_char(vm->arena, i - 16);
 	ft_printf("\n");

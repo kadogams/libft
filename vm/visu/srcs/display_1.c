@@ -6,7 +6,7 @@
 /*   By: adefonta <adefonta@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 18:07:01 by adefonta          #+#    #+#             */
-/*   Updated: 2019/03/12 14:47:00 by adefonta         ###   ########.fr       */
+/*   Updated: 2019/07/13 13:34:20 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	display_champi(t_mlx mlx, t_vm vm, int coord[2])
 		coord[1] += S_H;
 		txt = ft_strjoin(T_PLAYER_NAME, champi->name);
 		display_string(mlx, txt, coord, champi->color);
-		txt = ft_strjoin_free(T_PLAYER_INDEX, ft_itoa(champi->index), 1);
+		txt = ft_strjoin_free(T_PLAYER_NUMBER, ft_itoa(champi->number), 1);
 		display_string(mlx, txt, coord, champi->color);
 		txt = ft_strjoin_free(T_PLAYER_LIVE, ft_itoa(champi->nb_live), 1);
 		display_string(mlx, txt, coord, champi->color);

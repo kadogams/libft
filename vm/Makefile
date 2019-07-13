@@ -6,7 +6,7 @@
 #    By: aclecler <aclecler@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/18 00:39:00 by aclecler          #+#    #+#              #
-#    Updated: 2019/03/12 19:18:18 by adefonta         ###   ########.fr        #
+#    Updated: 2019/07/13 12:07:39 by skadogam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS = -O3 -Wall -Wextra -Werror #-fsanitize=address
 
 IN =	vm.c champi.c error.c pc.c free.c init.c arena.c operation.c\
 		args.c tools.c dump.c put.c put2.c flags.c verbosity.c introduction.c \
-		parser.c
+		parser.c sort_champi.c
 
 OP =	op_live.c op_ld.c op_st.c op_add.c op_sub.c op_and.c op_or.c op_xor.c \
 		op_zjmp.c op_ldi.c op_sti.c op_fork.c op_lld.c op_lldi.c op_lfork.c \

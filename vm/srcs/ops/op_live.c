@@ -6,7 +6,7 @@
 /*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 11:36:26 by skadogam          #+#    #+#             */
-/*   Updated: 2019/03/14 14:43:07 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/07/13 10:41:30 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int			op_live(t_vm *vm, t_pc *pc, int arg[3], char arg_type[3])
 			if (vm->champi[i]->number == arg[0])
 			{
 				if (vm->opt_v & 1)
-					verbosity_1(pc->champi->index + 1, vm->champi[i]->name);
+					verbosity_1(pc->champi->number, vm->champi[i]->name);
 				vm->champi[i]->nb_live++;
 				vm->champi[i]->last_live = vm->tot_cycles;
 				vm->last_living_champi = vm->champi[i];

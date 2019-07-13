@@ -6,7 +6,7 @@
 /*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 11:09:56 by skadogam          #+#    #+#             */
-/*   Updated: 2019/03/13 18:25:19 by dazheng          ###   ########.fr       */
+/*   Updated: 2019/07/13 13:47:25 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void		and_the_winner_is(t_vm *vm, t_champi *winner)
 {
 	if (!winner)
 		return ;
-	ft_printf("Contestant %d, \"%s\", has won !\n", winner->index + 1,
+	ft_printf("Player %d (%s) won !\n", winner->number,
 		winner->name);
 	if (vm->opt_dump != -1)
 		dump(vm);

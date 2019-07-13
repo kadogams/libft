@@ -6,7 +6,7 @@
 /*   By: adefonta <adefonta@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:14:02 by adefonta          #+#    #+#             */
-/*   Updated: 2019/03/06 15:00:04 by adefonta         ###   ########.fr       */
+/*   Updated: 2019/07/13 13:34:28 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@
 
 # define T_PLAYER_NAME		 	"Player     : "
 # define T_PLAYER_INDEX 		" index     : "
+# define T_PLAYER_NUMBER		" number    : "
 # define T_PLAYER_LIVE 			" nb live   : "
 # define T_PLAYER_PROCESS		" nb process: "
 # define T_PLAYER_DEATH_CYCLE	" death at  : "

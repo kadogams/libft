@@ -6,7 +6,7 @@
 /*   By: adefonta <adefonta@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 01:06:51 by adefonta          #+#    #+#             */
-/*   Updated: 2019/03/07 13:19:00 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/07/13 13:06:17 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ int				parse_champi(t_vm *vm, int ac, char **av, t_list **champi_lst)
 			return (KO);
 		close(fd);
 	}
+	sort_champi_by_number(vm, champi_lst);
 	if (!pc_init_all(vm, champi_lst))
 		return (KO);
 	return (OK);
