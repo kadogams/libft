@@ -6,13 +6,13 @@
 /*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 11:09:56 by skadogam          #+#    #+#             */
-/*   Updated: 2019/03/12 16:35:57 by adefonta         ###   ########.fr       */
+/*   Updated: 2019/03/13 18:25:19 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static void	and_the_winner_is(t_vm *vm, t_champi *winner)
+void		and_the_winner_is(t_vm *vm, t_champi *winner)
 {
 	if (!winner)
 		return ;
@@ -65,6 +65,5 @@ int			main(int ac, char **av)
 		free_champi_list(vm.champi, vm.nb_champi);
 		free_pc_list(vm.pc);
 	}
-	sleep(10);
 	return (0);
 }

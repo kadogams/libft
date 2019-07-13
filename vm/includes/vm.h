@@ -6,7 +6,7 @@
 /*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 11:11:27 by skadogam          #+#    #+#             */
-/*   Updated: 2019/03/07 21:00:24 by adefonta         ###   ########.fr       */
+/*   Updated: 2019/03/13 18:14:34 by dazheng          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "libftprintf.h"
 # include "struct.h"
 # include "macro.h"
+
+void		and_the_winner_is(t_vm *vm, t_champi *champi);
 
 int			arena_visu(t_vm *vm);
 int			arena_manage(t_vm *vm);
