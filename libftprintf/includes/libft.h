@@ -18,6 +18,9 @@
 # include <limits.h>
 # include "get_next_line.h"
 
+# define intmax_t __intmax_t
+# define uintmax_t __uintmax_t
+
 typedef struct	s_list
 {
 	void			*content;

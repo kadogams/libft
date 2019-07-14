@@ -14,7 +14,7 @@ NAME = asm
 
 CC = gcc
 
-#FLAGS = -O3 -Wall -Wextra -Werror
+# FLAGS = -O3 -Wall -Wextra -Werror
 
 IN =	asm.c\
 		error.c\
@@ -52,7 +52,7 @@ $(NAME): $(OBJS_LEMIN)
 	@make -C $(LIBFT)
 	@$(CC) $(FLAGS) $^ -o $@ -I $(LIBFT)/libft/includes -I $(INC) $(LIBFT)/libftprintf.a
 	@cp $(NAME) ../
-	@echo "\033[32mOutfile ASM	[ ✔ ]"
+	@echo "\033[32mOutfile ASM	[ ✔ ]\e[0m"
 
 $(OUT_DIR)/%.o: $(SRCS_DIR)/%.c
 	@mkdir -p $(OUT_DIR)
@@ -66,13 +66,13 @@ clean:
 	@rm -f $(OBJS_LEMIN)
 	@rm -rf $(OUT_DIR)
 	@make clean -C $(LIBFT)
-	@echo "\033[32mClean  [ ✔ ]"
+	@echo "\033[32mClean  [ ✔ ]\e[0m"
 
 fclean: clean
 	@rm -f $(NAME)
 	@rm -f ../$(NAME)
 	@make fclean -C $(LIBFT)
-	@echo "\033[32mFclean  [ ✔ ]"
+	@echo "\033[32mFclean  [ ✔ ]\e[0m"
 
 re: fclean all
 m : fclean main

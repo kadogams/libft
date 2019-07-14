@@ -17,6 +17,9 @@
 # include <stdarg.h>
 # include <wchar.h>
 
+# define intmax_t __intmax_t
+# define uintmax_t __uintmax_t
+
 /*
 ** size 1: hh | 2: h | 3: l | 4: ll | 5: z | 6: j
 */

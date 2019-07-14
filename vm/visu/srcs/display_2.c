@@ -126,9 +126,7 @@ void		display_end(t_mlx *mlx, t_vm *vm)
 {
 	int		coord[2];
 	int		c;
-	char	*txt;
 
-	txt = NULL;
 	c = C_WHITE;
 	coord[1] = STRING_END_Y;
 	coord[0] = STRING_END_X;

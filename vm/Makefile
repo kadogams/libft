@@ -37,10 +37,11 @@ SRCS_DIR_VISU = visu/srcs
 
 OUT_DIR = tmp
 
-INC =	-Iincludes -I$(LIBFT)/includes/ -I$(LIBFT)/libft/includes \
-		-Ivisu/includes -Ivisu/minilibx/
+HEADERS = includes
 
-INC_LIB =  -lmlx -L./visu/minilibx $(LIBFT)/libftprintf.a -L$(LIBFT)
+INC = -I $(HEADERS) -I $(LIBFT)/$(HEADERS) -I visu/$(HEADERS) -I visu/minilibx/
+
+INC_LIB =  -lmlx -L visu/minilibx -L $(LIBFT) $(LIBFT)/libftprintf.a
 
 SRCS = $(addprefix $(SRCS_DIR)/,$(IN)) $(addprefix $(OP_DIR)/,$(OP))
 
@@ -52,23 +53,31 @@ OBJS_VISU = $(addprefix $(OUT_DIR)/,$(IN_VISU:.c=.o))
 
 all: $(NAME)
 
-
+### >>>> COMMENT the rule below to compile without the minilibx visualizer
 $(NAME): lib $(OBJS) $(OBJS_VISU)
 	@$(CC) $(OBJS) $(OBJS_VISU) $(INC_LIB) $(FLAGS) -framework OpenGL -framework AppKit -o $(NAME)
 	@cp $(NAME) ../
-	@echo "\033[32mCorewar compiled	[ ✔ ]"
+	@echo "\033[32mCorewar compiled	[ ✔ ]\e[0m"
+### <<<<
+
+### >>>> UNCOMMENT the rule below to compile without the minilibx visualizer
+# $(NAME): $(OBJS)
+# 	$(CC) $(OBJS) $(FLAGS) -o $(NAME) $(LIBFT)/libftprintf.a
+# 	@cp $(NAME) ../
+# 	@echo "\033[32mCorewar compiled	[ ✔ ]\e[0m"
+### <<<<
 
 $(OUT_DIR)/%.o: $(SRCS_DIR)/%.c
-	@mkdir -p $(OUT_DIR)
-	@$(CC) $(FLAGS) $(INC) -o $@ -c $<
-
-$(OUT_DIR)/%.o: $(SRCS_DIR_VISU)/%.c
 	@mkdir -p $(OUT_DIR)
 	@$(CC) $(FLAGS) $(INC) -o $@ -c $<
 
 $(OUT_DIR)/%.o: $(OP_DIR)/%.c
 	@mkdir -p $(OUT_DIR)
 	@$(CC) $(FLAGS) $(INC) -o $@ -c $<
+
+$(OUT_DIR)/%.o: $(SRCS_DIR_VISU)/%.c
+	mkdir -p $(OUT_DIR)
+	$(CC) $(FLAGS) $(INC) -o $@ -c $<
 
 lib:
 	@make -C $(LIBFT)
@@ -83,17 +92,19 @@ clean:
 	@rm -rf $(OUT_DIR)
 	@make clean -C $(LIBFT)
 	@make -C visu/minilibx/ clean
-	@echo "\033[32mVM clean  [ ✔ ]"
+	@echo "\033[32mVM clean  [ ✔ ]\e[0m"
 
 fclean: clean
 	@rm -f $(NAME)
 	@rm -f ../$(NAME)
 	@make fclean -C $(LIBFT)
 	@make -C visu/minilibx/ fclean
-	@echo "\033[32mVM fclean  [ ✔ ]"
+	@echo "\033[32mVM fclean  [ ✔ ]\e[0m"
 
 re: fclean all
 
 f: fclean
 r: re
 c: clean
+
+.PHONY: all, clean, fclean, re
