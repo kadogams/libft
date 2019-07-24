@@ -6,7 +6,7 @@
 #    By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/13 15:03:00 by skadogam          #+#    #+#              #
-#    Updated: 2019/07/14 17:46:56 by kadogams         ###   ########.fr        #
+#    Updated: 2019/07/24 18:13:44 by skadogam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,8 +113,7 @@ IN =\
 	ft_utoa_base.c\
 	ft_wstrlen.c\
 	get_next_line.c\
-	get_next_line_v2.c\
-	ft_strjoin_free_s1.c
+	get_next_line_v2.c
 
 SRCS_DIR = srcs
 
