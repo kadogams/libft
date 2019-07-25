@@ -6,7 +6,7 @@
 #    By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/13 15:03:00 by skadogam          #+#    #+#              #
-#    Updated: 2019/07/24 18:13:44 by skadogam         ###   ########.fr        #
+#    Updated: 2019/07/25 15:11:30 by skadogam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,6 +90,7 @@ IN =\
 	ft_strequ.c\
 	ft_striter.c\
 	ft_striteri.c\
+	ft_strjoin_free_s1.c\
 	ft_strjoin.c\
 	ft_strlcat.c\
 	ft_strlen.c\
