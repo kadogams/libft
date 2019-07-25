@@ -5,7 +5,7 @@
 
 ## Description
 
-A team project to build a virtual machine where 'champions' written in an abstract assembly language fight over a defined memory space (full project instructions available [here](https://github.com/kadogams/42_projects/tree/master/corewar/ressources/pdfs)).
+A team project to build a virtual machine where 'champions' written in an abstract assembly language fight over a defined memory space (full project instructions available [here](https://github.com/kadogams/42_projects/tree/master/corewar/resources/pdfs)).
 
 The project consists of three parts:
 - the assembler (asm binary) compiles the abstract assembly language into bytecode, which can be interpreted by the virtual machine
@@ -24,7 +24,7 @@ The project consists of three parts:
 
 ## Usage
 
-- compile one or more .s files using the asm binary (premade champions available in [_./ressouces/champs/_](https://github.com/kadogams/42_projects/tree/master/corewar/ressources/champs))
+- compile one or more .s files using the asm binary (premade champions available in [_./ressouces/champs/_](https://github.com/kadogams/42_projects/tree/master/corewar/resources/champs))
 - execute the corewar binary with your warrior(s) as arguments
 
 ### asm
