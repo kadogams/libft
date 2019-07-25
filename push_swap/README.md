@@ -12,8 +12,8 @@ The project consists of two programs:
 
 - check command line arguments.
 - quicksort on an int array to have a presorted array, in order to find the median values of the partitions faster during the main algorithm.
-- backtracking on the whole set of values to see if can be solved in 8 or less moves.
-- start a divide and conquer algorithm based on medians, with a backtracking when a partition contains 5 or less elements, in order to sort them with the minimum possible operations.
+- backtracking agorithm on the whole set of values to see if can be solved in 8 or less moves.
+- implemation of a custom [divide-and-conquer algorithm](https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm) based on medians, combined with a backtracking algorithm when a partition contains 5 or less elements, in order to sort the partition with the minimum possible operations.
 
 ### Push_swap instruction language
 
