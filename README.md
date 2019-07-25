@@ -1,21 +1,13 @@
-# 42_projects
-
-Some personal and group projects made at School 19, a campus of 42 Paris.
-
-## Contents
-
-#### libft
+# Libft
 
 An implementation of multiple functions from the Standard C Library and some custom ones, in order to create your own library to be used during the school curriculum.
 
-#### ft_printf
+For detailed descriptions of the functions please refer to [the man pages of standard C library](http://man7.org/linux/man-pages/dir_section_3.html).
 
-An implementation of libc's prinft function.
+## Usage
 
-#### push_swap
+You may build the library by running ```make```, and include it in your C project:
 
-A project to explore sorting algorithms.
-
-#### corewar
-
-A virtual machine where 'champions' written in an abstract assembly language fight over a defined memory space.
+```
+#include "libft.h"
+```
