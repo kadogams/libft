@@ -12,6 +12,10 @@ An implementation of multiple functions from the Standard C Library and some cus
 
 An implementation of libc's prinft function.
 
+#### push_swap
+
+A project to explore sorting algorithms.
+
 #### corewar
 
 A virtual machine where 'champions' written in an abstract assembly language fight over a defined memory space.
