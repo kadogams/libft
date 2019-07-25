@@ -6,14 +6,23 @@
 /*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/03 14:38:44 by skadogam          #+#    #+#             */
-/*   Updated: 2019/07/24 21:42:57 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/07/25 11:18:15 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /*
-** Main of the Push Swap program.
+** Main function of the Push_swap program.
+** Flow of the program:
+**  - check command line arguments
+**  - quicksort on an int array to have a presorted array, in order to find
+**    the median values of the partitions faster during the main algorithm
+**  - backtracking on the whole set of values to see if can be solved in 8
+**    or less moves
+**  - start a divide and conquer algorithm based on medians, with a backtracking
+**    when a partition contains 5 or less elements, in order to sort them with
+**    the minimum possible instructions
 */
 
 static void	remove_reverse_op(t_data **data)

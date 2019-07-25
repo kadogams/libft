@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_structs.c                                      :+:      :+:    :+:   */
+/*   structs.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skadogam <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/03 14:37:48 by skadogam          #+#    #+#             */
-/*   Updated: 2018/11/07 13:53:12 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/07/25 10:18:59 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/*
+** Functions to init structures.
+*/
 
 void	stacknew(t_stack **head, int content)
 {

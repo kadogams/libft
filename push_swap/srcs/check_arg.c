@@ -6,11 +6,15 @@
 /*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/03 14:35:47 by skadogam          #+#    #+#             */
-/*   Updated: 2019/07/24 20:08:44 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/07/25 10:16:22 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/*
+** Functions to check the command line arguments.
+*/
 
 void	quit(t_data **data)
 {

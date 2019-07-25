@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   options.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skadogam <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/03 14:38:37 by skadogam          #+#    #+#             */
-/*   Updated: 2018/11/08 11:51:05 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/07/25 10:17:21 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/*
+** Simple ASCII vizualizer for debugging.
+*/
 
 void		print(t_stack *a, t_stack *a_head, t_stack *b, t_stack *b_head)
 {

@@ -6,14 +6,14 @@
 /*   By: skadogam <skadogam@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/03 14:35:53 by skadogam          #+#    #+#             */
-/*   Updated: 2019/07/24 21:42:40 by skadogam         ###   ########.fr       */
+/*   Updated: 2019/07/25 10:19:29 by skadogam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /*
-** Main of the checker program.
+** Main function of the checker program.
 */
 
 static int	check_op(char *line, t_stack **commands)
