@@ -24,7 +24,7 @@ The project consists of three parts:
 
 ## Usage
 
-- compile one or more .s files using the asm binary (premade champions available in [_./ressouces/champs/_](https://github.com/kadogams/42_projects/tree/master/corewar/resources/champs))
+- compile one or more .s files using the asm binary (premade champions available in [_./resouces/champs/_](https://github.com/kadogams/42_projects/tree/master/corewar/resources/champs))
 - execute the corewar binary with your warrior(s) as arguments
 
 ### asm
